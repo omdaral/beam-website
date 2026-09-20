@@ -9,9 +9,14 @@ direct downloads from GitHub Releases (`AhmedFaseh/beam-fileshare`), Lighthouse
 ## Structure
 
 - `index.html` — the whole page (inline critical CSS, no frameworks, no webfonts)
-- `app.js` — vanilla JS: fetches latest GitHub release, rewrites download links,
-  OS auto-detect, AR/EN toggle, theme toggle, copy buttons
-- `downloads.json` — offline fallback (used when the GitHub API is unreachable)
+- `app.js` — vanilla JS: reads `release.json`, rewrites download links,
+  OS auto-detect, AR/EN toggle, theme toggle, copy buttons.
+  The browser never calls api.github.com directly (a failed cross-origin
+  request logs a console error = Lighthouse Best-Practices penalty).
+- `release.json` — latest release snapshot (same-origin, always 200).
+  Refreshed hourly by `.github/workflows/sync-release.yml` with an
+  authenticated API call; untouched while the app repo is private/unreleased.
+- `downloads.json` — static fallback data used by docs and CI validation.
 - `assets/` — `logo.svg` (Beam identity) + `og.svg` (share cover)
 - `sitemap.xml` / `robots.txt` / `manifest.webmanifest` / `404.html` / `.nojekyll`
 - `.github/workflows/pages.yml` — build + deploy to GitHub Pages

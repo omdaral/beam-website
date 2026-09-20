@@ -28,7 +28,10 @@ jobs:
           import json
           json.load(open("downloads.json"))
           json.load(open("manifest.webmanifest"))
-          print("json ok")
+          r = json.load(open("release.json"))
+          assert r.get("tag", "").startswith("v"), "release.json needs a v* tag"
+          assert isinstance(r.get("assets"), list) and len(r["assets"]) >= 10, "release.json assets incomplete"
+          print("json ok:", r["tag"], len(r["assets"]), "assets")
           PY
           # no external render-blocking assets allowed (Lighthouse 100 gate)
           if grep -RoiE '<link[^>]+rel="stylesheet"' . --include='*.html'; then

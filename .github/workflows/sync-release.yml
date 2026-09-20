@@ -1,0 +1,63 @@
+name: Sync release info
+
+# Polls the app repo's latest GitHub release (authenticated: 1000 req/hr) and
+# commits a same-origin release.json for the static page to consume.
+# Why not call api.github.com from the browser? A failed cross-origin request
+# logs a console error (Lighthouse Best-Practices penalty) and anonymous calls
+# share a 60 req/hr/IP rate limit. This keeps the page deterministic and fast.
+# Safe when the app repo is private or has no release yet: the file is left
+# untouched (fallback:true) and the run only warns.
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest release (authenticated)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          HTTP="$(curl -s -o /tmp/rel.json -w '%{http_code}' --max-time 30 \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/AhmedFaseh/beam-fileshare/releases/latest)"
+          echo "API status: $HTTP"
+          if [ "$HTTP" != "200" ]; then
+            echo "::warning::latest release unavailable (HTTP $HTTP) — keeping existing release.json"
+            exit 0
+          fi
+          python3 - <<'PY'
+          import json, datetime
+          j = json.load(open("/tmp/rel.json"))
+          tag = j.get("tag_name")
+          if not tag:
+              print("no tag_name — keeping existing file")
+              raise SystemExit(0)
+          assets = [{"name": a["name"], "url": a["browser_download_url"]}
+                    for a in (j.get("assets") or [])
+                    if a.get("name") and a.get("browser_download_url")]
+          out = {"repo": "AhmedFaseh/beam-fileshare", "tag": tag,
+                 "published_at": j.get("published_at"),
+                 "fetched_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                 "fallback": False, "assets": assets}
+          json.dump(out, open("release.json", "w"), indent=1, sort_keys=True)
+          print(f"wrote release.json: {tag} with {len(assets)} assets")
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add release.json
+          git diff --cached --quiet && { echo "no change"; exit 0; }
+          git commit -m "Sync release info ($(python3 -c "import json;print(json.load(open('release.json'))['tag'])"))"
+          git push

@@ -97,7 +97,14 @@
       if (dict[k] !== undefined) el.textContent = dict[k];
     });
     var btn = $("#langBtn");
-    if (btn) btn.textContent = lang === "ar" ? "EN" : "عربي";
+    if (btn) {
+      btn.textContent = lang === "ar" ? "EN" : "عربي";
+      btn.setAttribute("aria-label", lang === "ar"
+        ? "EN — Switch language / تغيير اللغة"
+        : "عربي — Switch language / تغيير اللغة");
+    }
+    var tb = $("#themeBtn");
+    if (tb) tb.setAttribute("aria-label", lang === "ar" ? "تبديل المظهر" : "Toggle appearance");
     document.title = lang === "ar"
       ? "Beam — شارك ملفاتك بين أجهزتك بضغطة واحدة"
       : "Beam — Share files between your devices in one click";
@@ -220,7 +227,7 @@
       if (!fname) return;
       var url = null;
       for (var i = 0; i < (assets || []).length; i++) {
-        if (assets[i] && assets[i].name === fname && assets[i].browser_download_url) { url = assets[i].browser_download_url; break; }
+        if (assets[i] && assets[i].name === fname && (assets[i].browser_download_url || assets[i].url)) { url = assets[i].browser_download_url || assets[i].url; break; }
       }
       if (!url) url = "https://github.com/" + REPO + "/releases/download/" + tag + "/" + fname;
       a.setAttribute("href", url);
@@ -230,32 +237,21 @@
     initSmart(lang);
   }
 
+  // Release info comes from same-origin release.json (refreshed hourly by the
+  // sync-release workflow with an authenticated API call). The browser never
+  // calls api.github.com directly: a failing cross-origin request would log a
+  // console error (Best-Practices penalty) and hit unauthenticated rate limits.
   function initRelease(lang) {
     setBadge("v" + FALLBACK_VER, false, lang);
     if (typeof fetch !== "function") return;
-    var ctrl = (typeof AbortController !== "undefined") ? new AbortController() : null;
-    var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
-    var cached = null;
-    try { cached = JSON.parse(localStorage.getItem("beam-site-release") || "null"); } catch (e) {}
-    if (cached && cached.tag && cached.ts && Date.now() - cached.ts < 3600000 && cached.assets) {
-      clearTimeout(to);
-      upgradeLinks(cached.tag, cached.assets, lang);
-      return;
-    }
-    fetch("https://api.github.com/repos/" + REPO + "/releases/latest", {
-      headers: { Accept: "application/vnd.github+json" },
-      signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) {
-      clearTimeout(to);
+    fetch("release.json", { cache: "no-cache" }).then(function (r) {
       if (!r.ok) throw new Error("http " + r.status);
       return r.json();
     }).then(function (j) {
-      if (!j || !j.tag_name) throw new Error("bad payload");
-      var slim = (j.assets || []).map(function (a) { return { name: a.name, browser_download_url: a.browser_download_url }; });
-      try { localStorage.setItem("beam-site-release", JSON.stringify({ tag: j.tag_name, assets: slim, ts: Date.now() })); } catch (e) {}
-      upgradeLinks(j.tag_name, slim, lang);
+      if (!j || !j.tag) throw new Error("bad payload");
+      if (j.fallback) { setBadge(j.tag, false, lang); return; }
+      upgradeLinks(j.tag, j.assets, lang);
     }).catch(function () {
-      clearTimeout(to);
       setBadge("v" + FALLBACK_VER, false, lang);
     });
   }
@@ -277,9 +273,6 @@
     } catch (e) {}
     setLang(lang);
     initSmart(lang);
-    var cached = null;
-    try { cached = JSON.parse(localStorage.getItem("beam-site-release") || "null"); } catch (e) {}
-    if (cached && cached.tag) setBadge(cached.tag, true, lang);
-    else setBadge("v" + FALLBACK_VER, false, lang);
+    setBadge(currentTag, currentOk, lang);
   });
 })();

@@ -57,7 +57,8 @@ nav.main a:hover{background:var(--card);border:1px solid var(--line);padding:9px
 .badge .dot{width:9px;height:9px;border-radius:50%;background:#22c55e;flex:none}
 h1{font-size:clamp(1.9rem,5vw,3.1rem);line-height:1.25;margin:20px auto 12px;max-width:22ch;font-weight:900}
 .lead{color:var(--muted);font-size:clamp(1rem,2.4vw,1.2rem);max-width:60ch;margin:0 auto 24px}
-.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;min-height:60px}
+.btn.primary{min-width:250px}
 .note{font-size:.92rem;color:var(--muted)}
 .cmd{max-width:640px;margin:22px auto 0;background:var(--ink);color:#F7F5F0;border-radius:var(--radius);padding:6px 6px 6px 16px;display:flex;align-items:center;gap:10px;direction:ltr}
 [dir="rtl"] .cmd{padding:6px 16px 6px 6px}
@@ -91,7 +92,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 40px;colo
 footer .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 footer a{padding:6px 2px;min-height:32px;display:inline-block}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.status{font-size:.9rem;color:var(--muted);margin-top:10px}
+.status{font-size:.9rem;color:var(--muted);margin-top:10px;min-height:1.8em}
 </style>
 </head>
 <body>
@@ -110,7 +111,7 @@ footer a{padding:6px 2px;min-height:32px;display:inline-block}
 </nav>
 <div class="btns">
 <button class="btn" id="themeBtn" type="button" aria-pressed="false" aria-label="تبديل المظهر">◐</button>
-<button class="btn" id="langBtn" type="button" aria-label="Switch language / تغيير اللغة">EN</button>
+<button class="btn" id="langBtn" type="button" aria-label="EN — Switch language / تغيير اللغة">EN</button>
 </div>
 </div>
 </header>

@@ -26,7 +26,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          HTTP="$(curl -s -o /tmp/rel.json -w '%{http_code}' --max-time 30 \
+          HTTP="$(curl -sL --max-redirs 3 -o /tmp/rel.json -w '%{http_code}' --max-time 30 \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             https://api.github.com/repos/AhmedFaseh/beam-fileshare/releases/latest)"

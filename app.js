@@ -16,7 +16,7 @@
       var s = localStorage.getItem("beam-site-lang");
       if (s === "ar" || s === "en") return s;
     } catch (e) {}
-    return "ar";
+    return "en";
   }
 
   function setLang(lang) {

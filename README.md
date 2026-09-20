@@ -2,7 +2,7 @@
 
 Live site: **https://omdaral.github.io/beam-website/**
 
-Official single-page site for Beam file-sharing: Arabic (RTL) + English (LTR),
+Official single-page site for Beam file-sharing: English (LTR) primary + Arabic (RTL) fully supported,
 direct downloads from GitHub Releases (`AhmedFaseh/beam-fileshare`), Lighthouse
 100/100/100/100 gate on every PR.
 

@@ -1,0 +1,38 @@
+name: Lighthouse 100
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Serve site
+        run: |
+          npm i -g @lhci/cli http-server
+          (npx http-server . -p 8080 --silent &) 
+          sleep 3
+          curl -sf http://localhost:8080/ | head -c 300
+      - name: Lighthouse CI (100 in all 4 categories)
+        run: lhci autorun --config=lighthouserc.json
+      - name: Link check (internal anchors + downloads.json)
+        run: |
+          python3 - <<'PY'
+          import json, re, pathlib
+          html = pathlib.Path("index.html").read_text()
+          assert 'id="download"' in html and 'id="features"' in html and 'id="verify"' in html
+          d = json.load(open("downloads.json"))
+          assert d["fallback_version"] and len(d["assets"]) >= 10, "downloads.json incomplete"
+          links = re.findall(r'href="(https://github\.com/[^"]+)"', html)
+          assert any("releases/latest" in u for u in links), "no releases link"
+          print(f"links ok: {len(links)} github links, {len(d['assets'])} assets")
+          PY

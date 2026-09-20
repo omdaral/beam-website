@@ -1,0 +1,53 @@
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate static site
+        run: |
+          test -f index.html || { echo "index.html missing"; exit 1; }
+          test -f app.js || { echo "app.js missing"; exit 1; }
+          node --check app.js
+          python3 - <<'PY'
+          import json
+          json.load(open("downloads.json"))
+          json.load(open("manifest.webmanifest"))
+          print("json ok")
+          PY
+          # no external render-blocking assets allowed (Lighthouse 100 gate)
+          if grep -RoiE '<link[^>]+rel="stylesheet"' . --include='*.html'; then
+            echo "external stylesheet found — keep CSS inline for 100 score"; exit 1;
+          fi
+          if grep -RoiE '<script[^>]+src="http' . --include='*.html'; then
+            echo "external script found — keep JS local for 100 score"; exit 1;
+          fi
+          echo "size report:"; du -sh .; ls -la index.html app.js
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

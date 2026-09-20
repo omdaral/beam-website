@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://omdaral.github.io/beam-website/sitemap.xml

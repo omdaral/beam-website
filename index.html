@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beam — شارك ملفاتك بين أجهزتك بضغطة واحدة</title>
+<meta name="description" content="Beam برنامج صغير لكل نظام لمشاركة الملفات على شبكتك المحلية. بدون تثبيت، بدون حسابات. حمّل لنظام Linux وWindows وmacOS وAndroid مباشرة من GitHub Releases.">
+<link rel="canonical" href="https://omdaral.github.io/beam-website/">
+<link rel="alternate" hreflang="ar" href="https://omdaral.github.io/beam-website/?lang=ar">
+<link rel="alternate" hreflang="en" href="https://omdaral.github.io/beam-website/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://omdaral.github.io/beam-website/">
+<meta name="theme-color" content="#F7F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beam">
+<meta property="og:title" content="Beam — شارك ملفاتك بين أجهزتك بضغطة واحدة">
+<meta property="og:description" content="برنامج صغير لكل نظام. بدون تثبيت وبدون حسابات. تحميل مباشر من GitHub Releases.">
+<meta property="og:url" content="https://omdaral.github.io/beam-website/">
+<meta property="og:image" content="https://omdaral.github.io/beam-website/assets/og.svg">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Beam — مشاركة ملفات محلية بضغطة واحدة">
+<meta name="twitter:description" content="حمّل Beam لنظامك مباشرة من GitHub. بدون تثبيت وبدون حسابات.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/logo.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="color-scheme" content="light dark">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Beam","alternateName":"Beam FileShare","operatingSystem":["Linux","Windows","macOS","Android"],"applicationCategory":"UtilitiesApplication","inLanguage":["ar","en"],"license":"https://opensource.org/licenses/MIT","softwareVersion":"1.7.0","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://github.com/AhmedFaseh/beam-fileshare/releases/latest","codeRepository":"https://github.com/AhmedFaseh/beam-fileshare","sameAs":["https://github.com/AhmedFaseh/beam-fileshare"]}</script>
+<style>
+:root{--paper:#F7F5F0;--card:#FFFFFF;--ink:#191714;--muted:#57534A;--line:#E4DFD5;--badge:#B3261E;--accent:#D9481F;--ok:#1E7B44;--focus:#0B5FFF;--radius:14px;--max:1100px}
+@media(prefers-color-scheme:dark){:root{--paper:#141210;--card:#1E1A15;--ink:#F2EDE3;--muted:#C9C1B3;--line:#3A332B;--badge:#FF6B4A;--accent:#FF6B4A}}
+[data-theme="light"]{--paper:#F7F5F0;--card:#FFFFFF;--ink:#191714;--muted:#57534A;--line:#E4DFD5;--badge:#B3261E;--accent:#D9481F}
+[data-theme="dark"]{--paper:#141210;--card:#1E1A15;--ink:#F2EDE3;--muted:#C9C1B3;--line:#3A332B;--badge:#FF6B4A;--accent:#FF6B4A}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI",Tahoma,Arial,"Cairo",system-ui,-apple-system,sans-serif;line-height:1.7}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;z-index:99;text-decoration:none;transition:top .15s}
+.skip:focus{top:12px;color:var(--paper)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:20px}
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.15rem}
+.brand svg{width:32px;height:32px;flex:none}
+nav.main{margin-inline-start:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{text-decoration:none;padding:10px 12px;border-radius:10px;font-size:.95rem;min-height:44px;display:inline-flex;align-items:center}
+nav.main a:hover{background:var(--card);border:1px solid var(--line);padding:9px 11px}
+.btns{display:flex;gap:8px;align-items:center}
+.btn{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:10px 14px;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;min-height:44px;min-width:44px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);min-height:52px;padding:12px 22px;font-size:1rem}
+.btn:hover{border-color:var(--ink)}
+.hero{padding:56px 0 28px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);border-radius:999px;padding:8px 16px;font-size:.9rem;font-weight:700}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:#22c55e;flex:none}
+h1{font-size:clamp(1.9rem,5vw,3.1rem);line-height:1.25;margin:20px auto 12px;max-width:22ch;font-weight:900}
+.lead{color:var(--muted);font-size:clamp(1rem,2.4vw,1.2rem);max-width:60ch;margin:0 auto 24px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.note{font-size:.92rem;color:var(--muted)}
+.cmd{max-width:640px;margin:22px auto 0;background:var(--ink);color:#F7F5F0;border-radius:var(--radius);padding:6px 6px 6px 16px;display:flex;align-items:center;gap:10px;direction:ltr}
+[dir="rtl"] .cmd{padding:6px 16px 6px 6px}
+.cmd code{flex:1;overflow-x:auto;white-space:nowrap;font-family:ui-monospace,Consolas,monospace;font-size:.85rem;text-align:left}
+.cmd button{background:#F7F5F0;color:#191714;border:0;border-radius:10px;padding:10px 16px;font:inherit;font-weight:800;cursor:pointer;min-height:44px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0}
+@media(max-width:760px){.grid3{grid-template-columns:1fr}nav.main{display:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.card h2,.card h3{margin:0 0 8px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.step-n{display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);align-items:center;justify-content:center;font-weight:900;margin-bottom:10px}
+section.block{padding:28px 0}
+section.block>h2{font-size:clamp(1.4rem,3.4vw,2rem);margin:0 0 6px;font-weight:900}
+.sub{color:var(--muted);margin:0 0 18px;max-width:70ch}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+table{width:100%;border-collapse:collapse;min-width:640px;font-size:.94rem}
+caption{text-align:start;padding:14px 16px;font-weight:800;border-bottom:1px solid var(--line)}
+th,td{text-align:start;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+th[scope]{font-size:.85rem;color:var(--muted);font-weight:700}
+tbody tr:last-child td{border-bottom:0}
+.dl{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--badge);text-decoration:none;padding:8px 4px;min-height:44px}
+.dl:hover{text-decoration:underline}
+.hint{font-size:.85rem;color:var(--muted)}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.feats{grid-template-columns:1fr}}
+.feats h3{margin:0 0 6px}
+.feats p{margin:0;color:var(--muted);font-size:.93rem}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:800;padding:6px 0;min-height:44px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 40px;color:var(--muted);font-size:.9rem}
+footer .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer a{padding:6px 2px;min-height:32px;display:inline-block}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.status{font-size:.9rem;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">تخطَّ إلى المحتوى</a>
+<header class="top">
+<div class="wrap bar">
+<a class="brand" href="./" aria-label="Beam — الرئيسية">
+<svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="1" y="1" width="46" height="46" rx="11" fill="#F7F5F0"/><path d="M10 36 L28 8" stroke="#191714" stroke-width="5.5" stroke-linecap="round" fill="none"/><path d="M22 38 L36 16" stroke="#191714" stroke-width="5.5" stroke-linecap="round" opacity=".45" fill="none"/><circle cx="37" cy="37" r="5" fill="#D9481F"/></svg>
+<span>Beam</span>
+</a>
+<nav class="main" aria-label="التنقل الرئيسي">
+<a href="#download" data-i18n="nav_dl">التحميل</a>
+<a href="#features" data-i18n="nav_feat">المميزات</a>
+<a href="#verify" data-i18n="nav_verify">التحقق</a>
+<a href="#help" data-i18n="nav_help">المساعدة</a>
+</nav>
+<div class="btns">
+<button class="btn" id="themeBtn" type="button" aria-pressed="false" aria-label="تبديل المظهر">◐</button>
+<button class="btn" id="langBtn" type="button" aria-label="Switch language / تغيير اللغة">EN</button>
+</div>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<section class="hero" aria-labelledby="h1">
+<p class="badge"><span class="dot" aria-hidden="true"></span><span id="versionBadge" aria-live="polite">الإصدار v1.7.0 — جارٍ التحقق من الأحدث…</span></p>
+<h1 id="h1" data-i18n="h1">شارك ملفاتك بين أجهزتك بضغطة واحدة</h1>
+<p class="lead" data-i18n="lead">برنامج صغير واحد لكل نظام — بدون Python وبدون تثبيت. ملفاتك في مكان واحد تعرفه (Downloads/Beam)، وتعمل على شبكتك المحلية بدون حسابات.</p>
+<div class="cta">
+<a class="btn primary" id="smartDownload" href="#download">حمّل لجهازك</a>
+<a class="btn" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest" target="_blank" rel="noopener" data-i18n="cta_all">كل الإصدارات على GitHub</a>
+</div>
+<div class="cmd" role="group" aria-label="أمر التثبيت بنقرة واحدة">
+<code id="oneline">curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash</code>
+<button type="button" id="copyBtn" data-i18n="copy">نسخ</button>
+</div>
+<p class="note" data-i18n="oneline_hint">يكتشف نظامك ومعماريتك تلقائياً (Linux / macOS / Windows).</p>
+<p class="status" id="releaseStatus" aria-live="polite"></p>
+<div class="grid3" role="list">
+<div class="card" role="listitem"><span class="step-n" aria-hidden="true">1</span><h2 data-i18n="s1t">اتصل</h2><p data-i18n="s1d">انضم لنفس شبكة الواي فاي، أو أنشئ شبكة Beam الخاصة من البرنامج.</p></div>
+<div class="card" role="listitem"><span class="step-n" aria-hidden="true">2</span><h2 data-i18n="s2t">افتح / امسح</h2><p data-i18n="s2d">افتح رابط الدخول على المنفذ 2004 أو امسح رمز QR من بطاقة الشبكة.</p></div>
+<div class="card" role="listitem"><span class="step-n" aria-hidden="true">3</span><h2 data-i18n="s3t">ارفع ونزّل</h2><p data-i18n="s3d">الجميع يرفع ويحمّل من المتصفح. الملفات الكبيرة تُستأنف تلقائياً.</p></div>
+</div>
+</section>
+<section class="block" id="download" aria-labelledby="dl-h">
+<h2 id="dl-h" data-i18n="dl_h">التحميل — مباشرة من GitHub Releases</h2>
+<p class="sub" data-i18n="dl_sub">بدون بناء وبدون حساب. اختر نظامك، أو اترك الكشف التلقائي يختار لك. كل الملفات مرفقة مع بصمات SHA256 وMANIFEST في صفحة الإصدار.</p>
+<div class="tablewrap">
+<table>
+<caption data-i18n="t1c">1) النسخ المحمولة — الأكثر استخداماً (بدون تثبيت)</caption>
+<thead><tr><th scope="col" data-i18n="col_sys">نظامك</th><th scope="col" data-i18n="col_file">الملف</th><th scope="col" data-i18n="col_run">بعد التحميل</th></tr></thead>
+<tbody id="portableBody">
+<tr><td data-i18n="os_l64">Linux ‏64-بت (Intel/AMD)</td><td><a class="dl" data-asset="linux-amd64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-linux-amd64.tar.gz">Beam-1.7.0-linux-amd64.tar.gz</a></td><td class="hint" data-i18n="run_l">فك الضغط ثم ‎./install.sh‎ ثم نقرة مزدوجة على Beam</td></tr>
+<tr><td data-i18n="os_la">Linux ‏ARM (Raspberry Pi)</td><td><a class="dl" data-asset="linux-arm64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-linux-arm64.tar.gz">Beam-1.7.0-linux-arm64.tar.gz</a></td><td class="hint" data-i18n="run_same">نفس الخطوات</td></tr>
+<tr><td data-i18n="os_w64">Windows ‏64-بت</td><td><a class="dl" data-asset="windows-amd64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-windows-amd64.zip">Beam-1.7.0-windows-amd64.zip</a></td><td class="hint" data-i18n="run_w">أبقِ Beam.exe مع Beam.bat وانقر Beam.bat</td></tr>
+<tr><td data-i18n="os_wa">Windows ‏ARM</td><td><a class="dl" data-asset="windows-arm64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-windows-arm64.zip">Beam-1.7.0-windows-arm64.zip</a></td><td class="hint" data-i18n="run_same">نفس الخطوات</td></tr>
+<tr><td data-i18n="os_mi">Mac ‏Intel</td><td><a class="dl" data-asset="macos-amd64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-macos-amd64.zip">Beam-1.7.0-macos-amd64.zip</a></td><td class="hint" data-i18n="run_m">أول مرة: كليك يمين ← Open</td></tr>
+<tr><td data-i18n="os_ms">Mac ‏Apple Silicon</td><td><a class="dl" data-asset="macos-arm64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-macos-arm64.zip">Beam-1.7.0-macos-arm64.zip</a></td><td class="hint" data-i18n="run_same">نفس الخطوات</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="tablewrap">
+<table>
+<caption data-i18n="t2c">2) الهواتف</caption>
+<thead><tr><th scope="col" data-i18n="col_dev">الجهاز</th><th scope="col" data-i18n="col_file">الملف</th><th scope="col" data-i18n="col_run">التثبيت</th></tr></thead>
+<tbody>
+<tr><td>Android</td><td><a class="dl" data-asset="android" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-android.apk">Beam-1.7.0-android.apk</a></td><td class="hint" data-i18n="run_apk">انسخه للهاتف واسمح بمصادر غير معروفة مرة واحدة</td></tr>
+<tr><td>iPhone</td><td><span class="hint" data-i18n="no_app">لا يوجد تطبيق — من Safari اختر Add to Home Screen</span></td><td class="hint" data-i18n="run_ios">يعمل بملء الشاشة مثل التطبيق</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="tablewrap">
+<table>
+<caption data-i18n="t3c">3) حزم النظام (Linux — اختياري)</caption>
+<thead><tr><th scope="col" data-i18n="col_dist">التوزيعة</th><th scope="col" data-i18n="col_file">الملف</th><th scope="col" data-i18n="col_run">التثبيت</th></tr></thead>
+<tbody>
+<tr><td data-i18n="d_deb64">Debian / Ubuntu ‏64-بت</td><td><a class="dl" data-asset="deb-amd64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/beam-fileshare_1.7.0-1_amd64.deb">beam-fileshare_1.7.0-1_amd64.deb</a></td><td class="hint"><code dir="ltr">sudo dpkg -i *.deb</code></td></tr>
+<tr><td data-i18n="d_deba">Debian / Ubuntu ‏ARM</td><td><a class="dl" data-asset="deb-arm64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/beam-fileshare_1.7.0-1_arm64.deb">beam-fileshare_1.7.0-1_arm64.deb</a></td><td class="hint" data-i18n="run_same">نفس الأمر</td></tr>
+<tr><td>AppImage ‏64-بت</td><td><a class="dl" data-asset="appimage-x64" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/Beam-1.7.0-x86_64.AppImage">Beam-1.7.0-x86_64.AppImage</a></td><td class="hint"><code dir="ltr">chmod +x *.AppImage</code></td></tr>
+<tr><td>Fedora ‏(x86_64)</td><td><a class="dl" data-asset="rpm" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest/download/beam-fileshare-1.7.0-1.x86_64.rpm">beam-fileshare-1.7.0-1.x86_64.rpm</a></td><td class="hint"><code dir="ltr">sudo dnf install *.rpm</code></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="block" id="features" aria-labelledby="feat-h">
+<h2 id="feat-h" data-i18n="feat_h">لماذا Beam؟</h2>
+<p class="sub" data-i18n="feat_sub">مصمم للشبكة المحلية: سريع، بسيط، ويعمل دون إنترنت.</p>
+<div class="feats">
+<div class="card"><h3 data-i18n="f1t">بدون تثبيت</h3><p data-i18n="f1d">انسخ المجلد في أي مكان وانقر نقراً مزدوجاً. لا Python ولا صلاحيات مدير.</p></div>
+<div class="card"><h3 data-i18n="f2t">ملفات كبيرة بلا حدود</h3><p data-i18n="f2d">رفع متوازٍ بقطع صغيرة مع بصمة لكل قطعة، واستئناف تلقائي عند الانقطاع.</p></div>
+<div class="card"><h3 data-i18n="f3t">يعمل دون إنترنت</h3><p data-i18n="f3d">خط عربي مضمّن ورموز QR محلية. كل شيء يعمل على شبكتك فقط.</p></div>
+<div class="card"><h3 data-i18n="f4t">عربي / إنجليزي</h3><p data-i18n="f4d">زر لغة للجميع في الأعلى، وصاحب الجهاز يحدد لغة الزوار الافتراضية.</p></div>
+<div class="card"><h3 data-i18n="f5t">مجلد واحد واضح</h3><p data-i18n="f5d">كل المشاركات في Downloads/Beam. انسخ إليه من المضيف فتظهر للجميع فوراً.</p></div>
+<div class="card"><h3 data-i18n="f6t">أمان الشبكة</h3><p data-i18n="f6d">كلمة سر الواي فاي هي التحكم الوحيد. إيقاف تلقائي بعد 5 ساعات خمول.</p></div>
+</div>
+</section>
+<section class="block" id="verify" aria-labelledby="ver-h">
+<h2 id="ver-h" data-i18n="ver_h">تحقق من سلامة التحميل</h2>
+<p class="sub" data-i18n="ver_sub">كل إصدار مرفق مع SHA256SUMS وMANIFEST.json. قارن البصمة قبل التشغيل.</p>
+<div class="card">
+<p><code dir="ltr">sha256sum Beam-*.tar.gz</code></p>
+<p class="hint" data-i18n="ver_hint">قارن الناتج مع ملف SHA256SUMS في صفحة الإصدار. إذا ظهرت صفحة 404 فالمستودع ما زال خاصاً أو التاج لم يُدفع بعد.</p>
+<p><a class="dl" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest" target="_blank" rel="noopener" data-i18n="ver_link">فتح صفحة Releases والبصمات ←</a></p>
+</div>
+</section>
+<section class="block" id="help" aria-labelledby="help-h">
+<h2 id="help-h" data-i18n="help_h">أسئلة شائعة</h2>
+<details><summary data-i18n="q1t">أي ملف أختار؟ amd64 أم arm64؟</summary><p class="hint" data-i18n="q1d">نفّذ uname -m: الناتج x86_64 يعني amd64، وaarch64/arm64 يعني arm64. أو استخدم أمر النقرة الواحدة بالأعلى فهو يكتشف تلقائياً.</p></details>
+<details><summary data-i18n="q2t">الأيقونة لا تعمل على Linux؟</summary><p class="hint" data-i18n="q2d">نفّذ ./install.sh داخل المجلد ثم كليك يمين على الأيقونة ← Allow Launching. أو انقر ملف Beam مباشرة.</p></details>
+<details><summary data-i18n="q3t">هل أحتاج حساباً أو إنترنت؟</summary><p class="hint" data-i18n="q3d">لا. الجميع على نفس الواي فاي يفتح الرابط ويبدأ الرفع والتحميل مباشرة. الأمان الوحيد هو كلمة سر الشبكة.</p></details>
+<details><summary data-i18n="q4t">أين أجد المساعدة الكاملة؟</summary><p class="hint"><span data-i18n="q4d">الدليل الكامل في مستودع التطبيق:</span> <a class="dl" href="https://github.com/AhmedFaseh/beam-fileshare/blob/main/HELP.md" target="_blank" rel="noopener">HELP.md</a></p></details>
+</section>
+</div>
+</main>
+<footer>
+<div class="wrap row">
+<div><strong>Beam</strong> · <span data-i18n="foot">مشاركة محلية بضغطة واحدة — MIT © 2026 Ahmed Faseh</span></div>
+<div>
+<a href="https://github.com/AhmedFaseh/beam-fileshare" target="_blank" rel="noopener">GitHub</a> ·
+<a href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest" target="_blank" rel="noopener" data-i18n="foot_rel">الإصدارات</a> ·
+<a href="https://github.com/AhmedFaseh/beam-fileshare/blob/main/HELP.md" target="_blank" rel="noopener" data-i18n="foot_help">المساعدة</a>
+</div>
+</div>
+</footer>
+<script src="app.js" defer></script>
+<noscript><p style="text-align:center;padding:12px">يعمل الموقع بدون JavaScript — كل روابط التحميل أعلاه مباشرة من GitHub Releases.</p></noscript>
+</body>
+</html>

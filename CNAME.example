@@ -1,0 +1,4 @@
+# ضع هنا الدومين المخصص عند شرائه، مثال:
+# beam.example.com
+# ثم فعّل HTTPS من Settings → Pages → Custom domain.
+# اترك الملف فارغاً (أو احذفه) ما دمت تستخدم ORG.github.io.

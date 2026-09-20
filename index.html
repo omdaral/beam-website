@@ -36,7 +36,7 @@
       h1: "شارك ملفاتك بين أجهزتك بضغطة واحدة",
       lead: "برنامج صغير واحد لكل نظام — بدون Python وبدون تثبيت. ملفاتك في مكان واحد تعرفه (Downloads/Beam)، وتعمل على شبكتك المحلية بدون حسابات.",
       cta_all: "كل الإصدارات على GitHub", copy: "نسخ", copied: "تم النسخ ✓",
-      oneline_hint: "يكتشف نظامك ومعماريتك تلقائياً (Linux / macOS / Windows).",
+      oneline_hint: "يكتشف نظامك ومعماريتك تلقائياً ويثبّت Beam وينظّف — أمر واحد.",
       s1t: "اتصل", s1d: "انضم لنفس شبكة الواي فاي، أو أنشئ شبكة Beam الخاصة من البرنامج.",
       s2t: "افتح / امسح", s2d: "افتح رابط الدخول على المنفذ 2004 أو امسح رمز QR من بطاقة الشبكة.",
       s3t: "ارفع ونزّل", s3d: "الجميع يرفع ويحمّل من المتصفح. الملفات الكبيرة تُستأنف تلقائياً.",
@@ -72,7 +72,7 @@
       h1: "Share files between your devices in one click",
       lead: "One small program per OS — no Python, nothing to install. Your files live in one place you know (Downloads/Beam), on your local network with no accounts.",
       cta_all: "All releases on GitHub", copy: "Copy", copied: "Copied ✓",
-      oneline_hint: "Auto-detects your OS and architecture (Linux / macOS / Windows).",
+      oneline_hint: "Auto-detects your OS and architecture, installs Beam, and cleans up — one command.",
       s1t: "Connect", s1d: "Join the same Wi-Fi, or create your private Beam network from the app.",
       s2t: "Open / Scan", s2d: "Open the login link on port 2004 or scan the QR from the network card.",
       s3t: "Upload & download", s3d: "Everyone uploads and downloads from the browser. Large files resume automatically.",
@@ -205,10 +205,10 @@ footer a{padding:6px 2px;min-height:32px;display:inline-block}
 <a class="btn" href="https://github.com/AhmedFaseh/beam-fileshare/releases/latest" target="_blank" rel="noopener" data-i18n="cta_all">All releases on GitHub</a>
 </div>
 <div class="cmd" role="group" aria-label="One-line installer command">
-<code id="oneline">curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash</code>
+<code id="oneline">curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash -s -- --install</code>
 <button type="button" id="copyBtn" data-i18n="copy">Copy</button>
 </div>
-<p class="note" data-i18n="oneline_hint">Auto-detects your OS and architecture (Linux / macOS / Windows).</p>
+<p class="note" data-i18n="oneline_hint">Auto-detects your OS and architecture, installs Beam, and cleans up — one command.</p>
 <p class="status" id="releaseStatus" aria-live="polite"></p>
 <div class="grid3" role="list">
 <div class="card" role="listitem"><span class="step-n" aria-hidden="true">1</span><h2 data-i18n="s1t">Connect</h2><p data-i18n="s1d">Join the same Wi-Fi, or create your private Beam network from the app.</p></div>

@@ -1,7 +1,7 @@
 {
   "repo": "AhmedFaseh/beam-fileshare",
   "fallback_version": "1.7.0",
-  "one_liner": "curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash",
+  "one_liner": "curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash -s -- --install",
   "releases_page": "https://github.com/AhmedFaseh/beam-fileshare/releases/latest",
   "api_latest": "https://api.github.com/repos/AhmedFaseh/beam-fileshare/releases/latest",
   "assets": {

@@ -7,76 +7,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  var STR = {
-    ar: {
-      skip: "تخطَّ إلى المحتوى", nav_dl: "التحميل", nav_feat: "المميزات", nav_verify: "التحقق", nav_help: "المساعدة",
-      h1: "شارك ملفاتك بين أجهزتك بضغطة واحدة",
-      lead: "برنامج صغير واحد لكل نظام — بدون Python وبدون تثبيت. ملفاتك في مكان واحد تعرفه (Downloads/Beam)، وتعمل على شبكتك المحلية بدون حسابات.",
-      cta_all: "كل الإصدارات على GitHub", copy: "نسخ", copied: "تم النسخ ✓",
-      oneline_hint: "يكتشف نظامك ومعماريتك تلقائياً (Linux / macOS / Windows).",
-      s1t: "اتصل", s1d: "انضم لنفس شبكة الواي فاي، أو أنشئ شبكة Beam الخاصة من البرنامج.",
-      s2t: "افتح / امسح", s2d: "افتح رابط الدخول على المنفذ 2004 أو امسح رمز QR من بطاقة الشبكة.",
-      s3t: "ارفع ونزّل", s3d: "الجميع يرفع ويحمّل من المتصفح. الملفات الكبيرة تُستأنف تلقائياً.",
-      dl_h: "التحميل — مباشرة من GitHub Releases",
-      dl_sub: "بدون بناء وبدون حساب. اختر نظامك، أو اترك الكشف التلقائي يختار لك. كل الملفات مرفقة مع بصمات SHA256 وMANIFEST في صفحة الإصدار.",
-      t1c: "1) النسخ المحمولة — الأكثر استخداماً (بدون تثبيت)",
-      col_sys: "نظامك", col_file: "الملف", col_run: "بعد التحميل", col_dev: "الجهاز", col_dist: "التوزيعة",
-      os_l64: "Linux ‏64-بت (Intel/AMD)", os_la: "Linux ‏ARM (Raspberry Pi)", os_w64: "Windows ‏64-بت", os_wa: "Windows ‏ARM", os_mi: "Mac ‏Intel", os_ms: "Mac ‏Apple Silicon",
-      run_l: "فك الضغط ثم ./install.sh ثم نقرة مزدوجة على Beam", run_same: "نفس الخطوات", run_w: "أبقِ Beam.exe مع Beam.bat وانقر Beam.bat", run_m: "أول مرة: كليك يمين ← Open",
-      t2c: "2) الهواتف", run_apk: "انسخه للهاتف واسمح بمصادر غير معروفة مرة واحدة", no_app: "لا يوجد تطبيق — من Safari اختر Add to Home Screen", run_ios: "يعمل بملء الشاشة مثل التطبيق",
-      t3c: "3) حزم النظام (Linux — اختياري)", d_deb64: "Debian / Ubuntu ‏64-بت", d_deba: "Debian / Ubuntu ‏ARM",
-      feat_h: "لماذا Beam؟", feat_sub: "مصمم للشبكة المحلية: سريع، بسيط، ويعمل دون إنترنت.",
-      f1t: "بدون تثبيت", f1d: "انسخ المجلد في أي مكان وانقر نقراً مزدوجاً. لا Python ولا صلاحيات مدير.",
-      f2t: "ملفات كبيرة بلا حدود", f2d: "رفع متوازٍ بقطع صغيرة مع بصمة لكل قطعة، واستئناف تلقائي عند الانقطاع.",
-      f3t: "يعمل دون إنترنت", f3d: "خط عربي مضمّن ورموز QR محلية. كل شيء يعمل على شبكتك فقط.",
-      f4t: "عربي / إنجليزي", f4d: "زر لغة للجميع في الأعلى، وصاحب الجهاز يحدد لغة الزوار الافتراضية.",
-      f5t: "مجلد واحد واضح", f5d: "كل المشاركات في Downloads/Beam. انسخ إليه من المضيف فتظهر للجميع فوراً.",
-      f6t: "أمان الشبكة", f6d: "كلمة سر الواي فاي هي التحكم الوحيد. إيقاف تلقائي بعد 5 ساعات خمول.",
-      ver_h: "تحقق من سلامة التحميل", ver_sub: "كل إصدار مرفق مع SHA256SUMS وMANIFEST.json. قارن البصمة قبل التشغيل.",
-      ver_hint: "قارن الناتج مع ملف SHA256SUMS في صفحة الإصدار. إذا ظهرت صفحة 404 فالمستودع ما زال خاصاً أو التاج لم يُدفع بعد.",
-      ver_link: "فتح صفحة Releases والبصمات ←",
-      help_h: "أسئلة شائعة",
-      q1t: "أي ملف أختار؟ amd64 أم arm64؟", q1d: "نفّذ uname -m: الناتج x86_64 يعني amd64، وaarch64/arm64 يعني arm64. أو استخدم أمر النقرة الواحدة بالأعلى فهو يكتشف تلقائياً.",
-      q2t: "الأيقونة لا تعمل على Linux؟", q2d: "نفّذ ./install.sh داخل المجلد ثم كليك يمين على الأيقونة ← Allow Launching. أو انقر ملف Beam مباشرة.",
-      q3t: "هل أحتاج حساباً أو إنترنت؟", q3d: "لا. الجميع على نفس الواي فاي يفتح الرابط ويبدأ الرفع والتحميل مباشرة. الأمان الوحيد هو كلمة سر الشبكة.",
-      q4t: "أين أجد المساعدة الكاملة؟", q4d: "الدليل الكامل في مستودع التطبيق:",
-      foot: "مشاركة محلية بضغطة واحدة — MIT © 2026 Ahmed Faseh", foot_rel: "الإصدارات", foot_help: "المساعدة"
-    },
-    en: {
-      skip: "Skip to content", nav_dl: "Download", nav_feat: "Features", nav_verify: "Verify", nav_help: "Help",
-      h1: "Share files between your devices in one click",
-      lead: "One small program per OS — no Python, nothing to install. Your files live in one place you know (Downloads/Beam), on your local network with no accounts.",
-      cta_all: "All releases on GitHub", copy: "Copy", copied: "Copied ✓",
-      oneline_hint: "Auto-detects your OS and architecture (Linux / macOS / Windows).",
-      s1t: "Connect", s1d: "Join the same Wi-Fi, or create your private Beam network from the app.",
-      s2t: "Open / Scan", s2d: "Open the login link on port 2004 or scan the QR from the network card.",
-      s3t: "Upload & download", s3d: "Everyone uploads and downloads from the browser. Large files resume automatically.",
-      dl_h: "Download — directly from GitHub Releases",
-      dl_sub: "No build, no account. Pick your OS or let auto-detect choose for you. Every file ships with SHA256SUMS and MANIFEST on the release page.",
-      t1c: "1) Portable builds — most popular (no install)",
-      col_sys: "Your system", col_file: "File", col_run: "After download", col_dev: "Device", col_dist: "Distro",
-      os_l64: "Linux 64-bit (Intel/AMD)", os_la: "Linux ARM (Raspberry Pi)", os_w64: "Windows 64-bit", os_wa: "Windows ARM", os_mi: "Mac Intel", os_ms: "Mac Apple Silicon",
-      run_l: "Extract, run ./install.sh once, then double-click Beam", run_same: "Same steps", run_w: "Keep Beam.exe with Beam.bat, double-click Beam.bat", run_m: "First time: right-click → Open",
-      t2c: "2) Phones", run_apk: "Copy to phone, allow unknown sources once", no_app: "No app needed — in Safari choose Add to Home Screen", run_ios: "Opens fullscreen like an app",
-      t3c: "3) System packages (Linux — optional)", d_deb64: "Debian / Ubuntu 64-bit", d_deba: "Debian / Ubuntu ARM",
-      feat_h: "Why Beam?", feat_sub: "Built for the local network: fast, simple, works offline.",
-      f1t: "No install", f1d: "Copy the folder anywhere and double-click. No Python, no admin rights.",
-      f2t: "Huge files, no limits", f2d: "Parallel small chunks with a checksum per chunk, auto-resume on drop.",
-      f3t: "Works offline", f3d: "Embedded Arabic font and local QR codes. Everything stays on your network.",
-      f4t: "Arabic / English", f4d: "Language button for everyone; the host sets the default visitor language.",
-      f5t: "One clear folder", f5d: "Everything shared lives in Downloads/Beam. Copy there to publish instantly.",
-      f6t: "Network security", f6d: "The Wi-Fi password is the only access control. Auto-stops after 5 idle hours.",
-      ver_h: "Verify your download", ver_sub: "Every release ships SHA256SUMS and MANIFEST.json. Compare the hash before running.",
-      ver_hint: "Compare the output with SHA256SUMS on the release page. A 404 means the repo is still private or the tag was never pushed.",
-      ver_link: "Open Releases and checksums →",
-      help_h: "FAQ",
-      q1t: "Which file? amd64 or arm64?", q1d: "Run uname -m: x86_64 means amd64, aarch64/arm64 means arm64. Or use the one-liner above — it detects automatically.",
-      q2t: "Icon does nothing on Linux?", q2d: "Run ./install.sh inside the folder, then right-click the icon → Allow Launching. Or launch the Beam binary directly.",
-      q3t: "Do I need an account or internet?", q3d: "No. Everyone on the same Wi-Fi opens the link and starts sharing. The only security is the network password.",
-      q4t: "Where is the full help?", q4d: "Full guide in the app repo:",
-      foot: "One-click local sharing — MIT © 2026 Ahmed Faseh", foot_rel: "Releases", foot_help: "Help"
-    }
-  };
+  var STR = window.BEAM_STR || { ar: {}, en: {} };
 
   function getLang() {
     try {
@@ -212,11 +143,11 @@
     currentTag = ver; currentOk = ok;
     var b = $("#versionBadge"), st = $("#releaseStatus");
     if (b) b.textContent = lang === "ar"
-      ? "الإصدار " + ver + (ok ? " — الأحدث على GitHub ✓" : " — روابط احتياطية (تعذّر الاتصال بـ GitHub)")
-      : "Version " + ver + (ok ? " — latest on GitHub ✓" : " — fallback links (GitHub unreachable)");
+      ? "الإصدار " + ver + (ok ? " — الأحدث ✓" : " — روابط احتياطية")
+      : "Version " + ver + (ok ? " — latest ✓" : " — fallback links");
     if (st) st.textContent = lang === "ar"
-      ? (ok ? "تم التحقق من صفحة الإصدارات الآن — كل الروابط مباشرة من github.com." : "اعرض صفحة الإصدارات للمقارنة عند عودة الاتصال.")
-      : (ok ? "Verified against the Releases page just now — all links come straight from github.com." : "Check the Releases page when back online.");
+      ? (ok ? "تم التحقق — كل الروابط من github.com." : "روابط احتياطية — راجع صفحة الإصدارات.")
+      : (ok ? "Verified — all links from github.com." : "Fallback links — see the Releases page.");
   }
 
   function upgradeLinks(tag, assets, lang) {

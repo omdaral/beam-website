@@ -77,17 +77,21 @@ def download_markup(lang: dict[str, str], version: str) -> str:
                 f'<span class="build-download">{safe(lang["download_button"])}</span>'
                 '<span class="build-arrow" aria-hidden="true">↓</span></a>'
             )
-        linux_class = " platform-linux" if slug == "linux" else ""
         cards.append(
-            f'<article class="download-platform{linux_class}" data-platform="{safe(slug)}">'
-            '<header class="platform-heading">'
-            '<div>'
-            f'<h3>{safe(lang[title_key])}</h3><p>{safe(lang[desc_key])}</p>'
-            '</div>'
-            f'<span class="platform-mark" aria-hidden="true">{safe(slug.upper() if slug != "macos" else "MAC")}</span>'
-            '</header>'
+            f'<details class="download-platform" data-platform="{safe(slug)}">'
+            '<summary class="platform-summary">'
+            '<span class="platform-summary-main">'
+            f'<b>{safe(lang[title_key])}</b>'
+            f'<small class="platform-recommendation">{safe(lang["recommended_label"])}</small>'
+            '</span>'
+            f'<span class="platform-count"><b>{len(builds)}</b><span>{safe(lang["builds_label"])}</span></span>'
+            '<span class="platform-chevron" aria-hidden="true"></span>'
+            '</summary>'
+            '<div class="platform-content">'
+            f'<p class="platform-description">{safe(lang[desc_key])}</p>'
             f'<div class="build-list">{"".join(rows)}</div>'
-            '</article>'
+            '</div>'
+            '</details>'
         )
     return "\n".join(cards)
 

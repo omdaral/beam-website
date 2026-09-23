@@ -108,5 +108,7 @@
   "format_appimage": "تطبيق بملف واحد · بلا تثبيت",
   "format_deb": "حزمة .deb",
   "format_rpm": "حزمة .rpm",
-  "format_apk": "ملف APK للتثبيت"
+  "format_apk": "ملف APK للتثبيت",
+  "recommended_label": "مناسب لهذا الجهاز",
+  "builds_label": "خيارات"
 }

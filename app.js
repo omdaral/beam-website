@@ -69,6 +69,9 @@
     var key = detectDevice();
     var button = $("#smartDownload");
     if (!button) return;
+    document.querySelectorAll(".download-platform.recommended, .build-choice.recommended").forEach(function (item) {
+      item.classList.remove("recommended");
+    });
     if (key === "ios") {
       button.href = "#iphone-note";
       button.textContent = labels.ios;
@@ -78,11 +81,19 @@
     if (match) {
       button.href = match.href;
       button.textContent = labels.prefix + " " + deviceLabel(key);
-      var card = match.closest(".download-option");
-      if (card) card.classList.add("recommended");
+      var platform = match.closest(".download-platform");
+      if (platform) platform.classList.add("recommended");
+      match.classList.add("recommended");
     } else {
       button.href = "#download";
     }
+  }
+
+  function formatBytes(bytes) {
+    var value = Number(bytes);
+    if (!Number.isFinite(value) || value <= 0) return "";
+    var mb = value / (1024 * 1024);
+    return (mb >= 1 ? mb.toFixed(1) + " MB" : (value / 1024).toFixed(0) + " KB");
   }
 
   function setTheme(theme) {
@@ -156,6 +167,8 @@
       var asset = byName[name];
       if (!name || !asset) return;
       link.href = asset.browser_download_url || asset.url || "https://github.com/" + REPO + "/releases/download/" + data.tag + "/" + name;
+      var size = $("[data-asset-size='" + key + "']");
+      if (size && asset.size) size.textContent = formatBytes(asset.size);
     });
     var badge = $("#versionBadge");
     var status = $("#releaseStatus");

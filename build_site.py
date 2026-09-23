@@ -29,20 +29,28 @@ ASSETS = {
     "appimage-arm": lambda v: f"Beam-{v}-aarch64.AppImage",
     "rpm": lambda v: f"beam-fileshare-{v}-1.x86_64.rpm",
 }
-PRIMARY = ["windows-amd64", "linux-amd64", "macos-arm64", "android"]
-ALT = ["linux-arm64", "windows-arm64", "macos-amd64", "deb-amd64", "deb-arm64", "appimage-x64", "appimage-arm", "rpm"]
-ALT_LABELS = {
-    "linux-arm64": "alt_linux_arm", "windows-arm64": "alt_windows_arm",
-    "macos-amd64": "alt_mac_intel", "deb-amd64": "alt_deb_amd64",
-    "deb-arm64": "alt_deb_arm64", "appimage-x64": "alt_appimage",
-    "appimage-arm": "alt_appimage_arm", "rpm": "alt_rpm",
-}
-PRIMARY_LABELS = {
-    "windows-amd64": ("download_windows", "download_windows_desc"),
-    "linux-amd64": ("download_linux", "download_linux_desc"),
-    "macos-arm64": ("download_mac", "download_mac_desc"),
-    "android": ("download_android", "download_android_desc"),
-}
+PLATFORMS = [
+    ("windows", "platform_windows", "platform_windows_desc", [
+        ("windows-amd64", "build_windows_x64", "format_zip"),
+        ("windows-arm64", "build_windows_arm64", "format_zip"),
+    ]),
+    ("macos", "platform_macos", "platform_macos_desc", [
+        ("macos-arm64", "build_macos_arm64", "format_zip"),
+        ("macos-amd64", "build_macos_intel", "format_zip"),
+    ]),
+    ("linux", "platform_linux", "platform_linux_desc", [
+        ("linux-amd64", "build_linux_x64", "format_archive"),
+        ("linux-arm64", "build_linux_arm64", "format_archive"),
+        ("appimage-x64", "build_appimage_x64", "format_appimage"),
+        ("appimage-arm", "build_appimage_arm64", "format_appimage"),
+        ("deb-amd64", "build_deb_x64", "format_deb"),
+        ("deb-arm64", "build_deb_arm64", "format_deb"),
+        ("rpm", "build_rpm_x64", "format_rpm"),
+    ]),
+    ("android", "platform_android", "platform_android_desc", [
+        ("android", "build_android_apk", "format_apk"),
+    ]),
+]
 
 
 def safe(value: object) -> str:
@@ -53,31 +61,35 @@ def href(key: str, version: str) -> str:
     return f"https://github.com/{REPO}/releases/download/v{version}/{ASSETS[key](version)}"
 
 
-def download_markup(lang: dict[str, str], version: str) -> tuple[str, str]:
+def download_markup(lang: dict[str, str], version: str) -> str:
     cards: list[str] = []
-    for key in PRIMARY:
-        title_key, desc_key = PRIMARY_LABELS[key]
-        filename = ASSETS[key](version)
+    for slug, title_key, desc_key, builds in PLATFORMS:
+        rows: list[str] = []
+        for key, build_key, format_key in builds:
+            title = lang[build_key]
+            rows.append(
+                f'<a class="build-choice" data-asset="{safe(key)}" href="{safe(href(key, version))}" '
+                f'aria-label="{safe(lang["download_button"])} {safe(title)}">'
+                '<span class="build-choice-main">'
+                f'<b>{safe(title)}</b><small>{safe(lang[format_key])}</small>'
+                '</span>'
+                f'<span class="build-size" data-asset-size="{safe(key)}" aria-hidden="true"></span>'
+                f'<span class="build-download">{safe(lang["download_button"])}</span>'
+                '<span class="build-arrow" aria-hidden="true">↓</span></a>'
+            )
+        linux_class = " platform-linux" if slug == "linux" else ""
         cards.append(
-            '<article class="download-option">'
-            '<div class="download-name">'
-            f'<h3>{safe(lang[title_key])}</h3>'
-            f'<p>{safe(lang[desc_key])}</p>'
+            f'<article class="download-platform{linux_class}" data-platform="{safe(slug)}">'
+            '<header class="platform-heading">'
+            '<div>'
+            f'<h3>{safe(lang[title_key])}</h3><p>{safe(lang[desc_key])}</p>'
             '</div>'
-            f'<a class="download-link" data-asset="{safe(key)}" href="{safe(href(key, version))}" '
-            f'aria-label="{safe(lang["download_button"])} {safe(lang[title_key])}">'
-            f'{safe(lang["download_button"])} <span aria-hidden="true">↓</span></a>'
+            f'<span class="platform-mark" aria-hidden="true">{safe(slug.upper() if slug != "macos" else "MAC")}</span>'
+            '</header>'
+            f'<div class="build-list">{"".join(rows)}</div>'
             '</article>'
         )
-    alternatives: list[str] = []
-    for key in ALT:
-        filename = ASSETS[key](version)
-        label = safe(lang[ALT_LABELS[key]])
-        alternatives.append(
-            f'<a data-asset="{safe(key)}" href="{safe(href(key, version))}">'
-            f'<span>{label}</span><b dir="ltr">{safe(filename)}</b></a>'
-        )
-    return "\n".join(cards), "\n".join(alternatives)
+    return "\n".join(cards)
 
 
 def faq_markup(lang: dict[str, str]) -> str:
@@ -118,7 +130,7 @@ def render(lang_code: str, version: str) -> str:
     is_ar = lang_code == "ar"
     canonical = BASE + ("ar/" if is_ar else "")
     url_ar = BASE + "ar/"
-    cards, alternatives = download_markup(lang, version)
+    cards = download_markup(lang, version)
     values: dict[str, object] = dict(lang)
     values.update({
         "styles": STYLES,
@@ -140,7 +152,7 @@ def render(lang_code: str, version: str) -> str:
         "help_url": HELP_PAGE,
         "app_js": "../app.js" if is_ar else "app.js",
         "download_cards": cards,
-        "alternate_downloads": alternatives,
+        "alternate_downloads": "",
         "faq_items": faq_markup(lang),
         "structured_data": structured_data(lang, canonical, version),
     })

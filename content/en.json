@@ -108,5 +108,7 @@
   "format_appimage": "Single-file app · no installation",
   "format_deb": ".deb package",
   "format_rpm": ".rpm package",
-  "format_apk": "Installable APK"
+  "format_apk": "Installable APK",
+  "recommended_label": "Recommended for this device",
+  "builds_label": "options"
 }

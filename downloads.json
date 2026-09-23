@@ -1,7 +1,7 @@
 {
   "repo": "omdaral/beam-fileshare",
   "fallback_version": "1.7.1",
-  "one_liner": "curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash -s -- --install",
+  "one_liner": "curl -sSL https://raw.githubusercontent.com/omdaral/beam-fileshare/main/get-beam.sh | bash -s -- --install",
   "releases_page": "https://github.com/omdaral/beam-fileshare/releases/latest",
   "api_latest": "https://api.github.com/repos/omdaral/beam-fileshare/releases/latest",
   "assets": {

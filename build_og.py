@@ -56,12 +56,12 @@ def make(lang: str) -> None:
     if lang == "ar":
         title = "شارك الملفات محليًا\nعبر الواي فاي بلا سحابة"
         subtitle = "ويندوز · ماك · لينكس · أندرويد"
-        note = "مجاني ومفتوح المصدر · المتصفح يكفي للمستلم"
+        note = "مجاني شخصي · الإصدارات الجديدة غير تجارية"
         rtl = True
     else:
         title = "Local Wi-Fi file sharing.\nNo cloud or receiver app."
         subtitle = "Windows · macOS · Linux · Android"
-        note = "Free and open source · browser-based sharing"
+        note = "Free personal use · new versions non-commercial"
         rtl = False
     ftitle = font(AR if rtl else BOLD, 37 if rtl else 35)
     fsub = font(AR if rtl else REG, 22)

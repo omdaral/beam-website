@@ -2,7 +2,7 @@
 
 Live site: **https://omdaral.github.io/beam-website/**
 
-Official website for Beam FileShare, an open-source local Wi-Fi file-sharing app. It includes English and Arabic landing pages, platform downloads, and practical guides for sharing over Wi-Fi and transferring files between Android and Windows.
+Official website for Beam FileShare, a source-available local Wi-Fi file-sharing app that is free for non-commercial use. Commercial use requires prior written permission from omdaral. It includes English and Arabic landing pages, platform downloads, and practical guides for sharing over Wi-Fi and transferring files between Android and Windows.
 
 - [Share files over Wi-Fi without cloud uploads](https://omdaral.github.io/beam-website/guides/share-files-over-wifi/)
 - [مشاركة الملفات عبر الواي فاي بلا سحابة](https://omdaral.github.io/beam-website/ar/guides/share-files-over-wifi/)

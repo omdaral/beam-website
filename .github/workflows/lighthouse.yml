@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Generate localized pages
+        run: python3 build_site.py
       - name: Serve site
         run: |
           npm i -g @lhci/cli http-server

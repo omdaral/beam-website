@@ -1,209 +1,179 @@
-/* Beam official site — vanilla, no deps. Dynamic GitHub release + i18n + theme. */
+/* Beam site interactions: theme, device recommendation, release links, and copy. */
 (function () {
   "use strict";
-  var REPO = "AhmedFaseh/beam-fileshare";
-  var FALLBACK_VER = "1.7.0";
-  var currentTag = "v" + FALLBACK_VER, currentOk = false;
-  var $ = function (s, r) { return (r || document).querySelector(s); };
-  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  var STR = window.BEAM_STR || { ar: {}, en: {} };
+  var REPO = "omdaral/beam-fileshare";
+  var $ = function (selector, root) { return (root || document).querySelector(selector); };
+  var lang = document.documentElement.lang === "ar" ? "ar" : "en";
+  var labels = lang === "ar" ? {
+    prefix: "نزّل Beam لـ", ios: "استخدم Beam من Safari",
+    windows: "ويندوز 64-بت", windowsArm: "ويندوز ARM",
+    linux: "لينكس 64-بت", linuxArm: "لينكس ARM",
+    mac: "macOS Apple Silicon", macIntel: "macOS Intel", android: "أندرويد",
+    copied: "تم النسخ", latest: "أحدث إصدار", github: "روابط تنزيل GitHub",
+    fallback: "روابط الإصدار الحالي", copyError: "تعذّر النسخ — حدّد الأمر وانسخه يدويًا"
+  } : {
+    prefix: "Download Beam for", ios: "Use Beam from Safari",
+    windows: "Windows 64-bit", windowsArm: "Windows ARM",
+    linux: "Linux 64-bit", linuxArm: "Linux ARM",
+    mac: "macOS Apple Silicon", macIntel: "macOS Intel", android: "Android",
+    copied: "Copied", latest: "Latest version", github: "GitHub download links",
+    fallback: "Current release links", copyError: "Could not copy — select and copy the command manually"
+  };
+  var filename = function (key, version) {
+    var files = {
+      "windows-amd64": "Beam-" + version + "-windows-amd64.zip",
+      "windows-arm64": "Beam-" + version + "-windows-arm64.zip",
+      "linux-amd64": "Beam-" + version + "-linux-amd64.tar.gz",
+      "linux-arm64": "Beam-" + version + "-linux-arm64.tar.gz",
+      "macos-arm64": "Beam-" + version + "-macos-arm64.zip",
+      "macos-amd64": "Beam-" + version + "-macos-amd64.zip",
+      android: "Beam-" + version + "-android.apk",
+      "deb-amd64": "beam-fileshare_" + version + "-1_amd64.deb",
+      "deb-arm64": "beam-fileshare_" + version + "-1_arm64.deb",
+      "appimage-x64": "Beam-" + version + "-x86_64.AppImage",
+      "appimage-arm": "Beam-" + version + "-aarch64.AppImage",
+      rpm: "beam-fileshare-" + version + "-1.x86_64.rpm"
+    };
+    return files[key] || "";
+  };
 
-  function getLang() {
-    try {
-      var q = new URLSearchParams(location.search).get("lang");
-      if (q === "ar" || q === "en") return q;
-      var s = localStorage.getItem("beam-site-lang");
-      if (s === "ar" || s === "en") return s;
-    } catch (e) {}
-    return "en";
+  function detectDevice() {
+    var ua = (navigator.userAgent || "").toLowerCase();
+    var platform = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "").toLowerCase();
+    var architecture = (navigator.userAgentData && navigator.userAgentData.architecture) || "";
+    var source = ua + " " + platform + " " + architecture;
+    var arm = /arm|aarch64/.test(source);
+    if (/iphone|ipad|ipod/.test(source) || (/macintel/.test(platform) && navigator.maxTouchPoints > 1)) return "ios";
+    if (/android/.test(source)) return "android";
+    if (/windows/.test(source) || /win32|win64/.test(platform)) return arm ? "windows-arm64" : "windows-amd64";
+    if (/macintosh|mac os|macintel|macppc/.test(source)) return arm || /arm|aarch64/.test(platform) ? "macos-arm64" : "macos-amd64";
+    if (/linux|x11/.test(source)) return arm ? "linux-arm64" : "linux-amd64";
+    return null;
   }
 
-  function setLang(lang) {
-    var dict = STR[lang] || STR.ar;
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    $$("[data-i18n]").forEach(function (el) {
-      var k = el.getAttribute("data-i18n");
-      if (dict[k] !== undefined) el.textContent = dict[k];
-    });
-    var btn = $("#langBtn");
-    if (btn) {
-      btn.textContent = lang === "ar" ? "EN" : "عربي";
-      btn.setAttribute("aria-label", lang === "ar"
-        ? "EN — Switch language / تغيير اللغة"
-        : "عربي — Switch language / تغيير اللغة");
+  function deviceLabel(key) {
+    var labelsByKey = {
+      "windows-amd64": labels.windows,
+      "windows-arm64": labels.windowsArm,
+      "linux-amd64": labels.linux,
+      "linux-arm64": labels.linuxArm,
+      "macos-arm64": labels.mac,
+      "macos-amd64": labels.macIntel,
+      android: labels.android
+    };
+    return labelsByKey[key] || "";
+  }
+
+  function updateRecommendation() {
+    var key = detectDevice();
+    var button = $("#smartDownload");
+    if (!button) return;
+    if (key === "ios") {
+      button.href = "#iphone-note";
+      button.textContent = labels.ios;
+      return;
     }
-    var tb = $("#themeBtn");
-    if (tb) tb.setAttribute("aria-label", lang === "ar" ? "تبديل المظهر" : "Toggle appearance");
-    document.title = lang === "ar"
-      ? "Beam — شارك ملفاتك بين أجهزتك بضغطة واحدة"
-      : "Beam — Share files between your devices in one click";
-    var md = document.querySelector('meta[name="description"]');
-    if (md) md.setAttribute("content", dict.lead);
-    try { localStorage.setItem("beam-site-lang", lang); } catch (e) {}
-    setBadge(currentTag, currentOk, lang);
+    var match = key ? $("[data-asset='" + key + "']") : null;
+    if (match) {
+      button.href = match.href;
+      button.textContent = labels.prefix + " " + deviceLabel(key);
+      var card = match.closest(".download-option");
+      if (card) card.classList.add("recommended");
+    } else {
+      button.href = "#download";
+    }
+  }
+
+  function setTheme(theme) {
+    if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    else document.documentElement.removeAttribute("data-theme");
+    var button = $("#themeBtn");
+    if (button) button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
   }
 
   function initTheme() {
-    var btn = $("#themeBtn");
-    function current() {
-      try { return localStorage.getItem("beam-site-theme") || "auto"; } catch (e) { return "auto"; }
-    }
-    function apply(v) {
-      if (v === "light" || v === "dark") document.documentElement.setAttribute("data-theme", v);
-      else document.documentElement.removeAttribute("data-theme");
-      if (btn) btn.setAttribute("aria-pressed", v === "dark" ? "true" : "false");
-    }
-    apply(current());
-    if (btn) btn.addEventListener("click", function () {
-      var c = current();
-      var next = c === "dark" ? "light" : c === "light" ? "auto" : "dark";
+    var theme = "light";
+    try {
+      var stored = localStorage.getItem("beam-site-theme");
+      if (stored === "dark" || stored === "light") theme = stored;
+    } catch (e) {}
+    setTheme(theme);
+    var button = $("#themeBtn");
+    if (!button) return;
+    button.addEventListener("click", function () {
+      var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
       try { localStorage.setItem("beam-site-theme", next); } catch (e) {}
-      apply(next);
+      setTheme(next);
     });
   }
 
   function initCopy() {
-    var btn = $("#copyBtn"), code = $("#oneline");
-    if (!btn || !code) return;
-    var lang = getLang();
-    btn.addEventListener("click", function () {
-      var t = code.textContent.trim();
+    var button = $("#copyBtn");
+    var command = $("#oneline");
+    if (!button || !command) return;
+    button.addEventListener("click", function () {
+      var original = button.textContent;
       function done() {
-        var orig = btn.textContent;
-        btn.textContent = (STR[lang] || STR.ar).copied;
-        setTimeout(function () { btn.textContent = orig; }, 1600);
+        button.textContent = labels.copied;
+        window.setTimeout(function () { button.textContent = original; }, 1400);
+      }
+      function fail() {
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(command);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.textContent = labels.copyError;
+        window.setTimeout(function () { button.textContent = original; }, 2600);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(t).then(done, function () { fallback(); });
-      } else fallback();
-      function fallback() {
-        try {
-          var ta = document.createElement("textarea");
-          ta.value = t; ta.setAttribute("readonly", "");
-          ta.style.position = "fixed"; ta.style.opacity = "0";
-          document.body.appendChild(ta); ta.select();
-          document.execCommand("copy"); document.body.removeChild(ta); done();
-        } catch (e) {}
+        navigator.clipboard.writeText(command.textContent.trim()).then(done, fail);
+      } else {
+        var input = document.createElement("textarea");
+        input.value = command.textContent.trim();
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        var copied = false;
+        try { copied = document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(input);
+        copied ? done() : fail();
       }
     });
   }
 
-  function detectOS() {
-    var ua = (navigator.userAgent || "").toLowerCase();
-    var plat = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "").toLowerCase();
-    var isARM = /arm|aarch64|apple m|m1|m2|m3|m4|iphone|ipad/.test(ua + " " + plat);
-    var isMac = /mac|darwin|iphone|ipad/.test(ua + " " + plat);
-    var isWin = /win/.test(ua + " " + plat);
-    var isAndroid = /android/.test(ua);
-    var isIOS = /iphone|ipad|ipod/.test(ua);
-    if (isIOS) return { key: null, label_ar: "iPhone — بدون تطبيق", label_en: "iPhone — no app needed" };
-    if (isAndroid) return { key: "android", label_ar: "Android", label_en: "Android" };
-    if (isMac) return { key: isARM ? "macos-arm64" : "macos-amd64", label_ar: isARM ? "Mac ‏Apple Silicon" : "Mac ‏Intel", label_en: isARM ? "Mac Apple Silicon" : "Mac Intel" };
-    if (isWin) return { key: isARM ? "windows-arm64" : "windows-amd64", label_ar: isARM ? "Windows ‏ARM" : "Windows ‏64-بت", label_en: isARM ? "Windows ARM" : "Windows 64-bit" };
-    return { key: isARM ? "linux-arm64" : "linux-amd64", label_ar: isARM ? "Linux ‏ARM" : "Linux ‏64-بت", label_en: isARM ? "Linux ARM" : "Linux 64-bit" };
-  }
-
-  function fileFor(key, ver) {
-    var m = {
-      "linux-amd64": "Beam-" + ver + "-linux-amd64.tar.gz",
-      "linux-arm64": "Beam-" + ver + "-linux-arm64.tar.gz",
-      "windows-amd64": "Beam-" + ver + "-windows-amd64.zip",
-      "windows-arm64": "Beam-" + ver + "-windows-arm64.zip",
-      "macos-amd64": "Beam-" + ver + "-macos-amd64.zip",
-      "macos-arm64": "Beam-" + ver + "-macos-arm64.zip",
-      "android": "Beam-" + ver + "-android.apk",
-      "deb-amd64": "beam-fileshare_" + ver + "-1_amd64.deb",
-      "deb-arm64": "beam-fileshare_" + ver + "-1_arm64.deb",
-      "appimage-x64": "Beam-" + ver + "-x86_64.AppImage",
-      "appimage-arm": "Beam-" + ver + "-aarch64.AppImage",
-      "rpm": "beam-fileshare-" + ver + "-1.x86_64.rpm"
-    };
-    return m[key] || null;
-  }
-
-  function initSmart(lang) {
-    var d = detectOS(), el = $("#smartDownload");
-    if (!el) return;
-    var dict = STR[lang] || STR.ar;
-    if (!d.key) {
-      el.setAttribute("href", "#download");
-      el.textContent = lang === "ar" ? "ثبّت من Safari ← مشاركة ← Add to Home Screen" : "Install from Safari → Share → Add to Home Screen";
-      return;
-    }
-    var target = document.querySelector('[data-asset="' + d.key + '"]');
-    if (target) el.setAttribute("href", target.getAttribute("href"));
-    else el.setAttribute("href", "#download");
-    var name = lang === "ar" ? d.label_ar : d.label_en;
-    el.textContent = (lang === "ar" ? "حمّل لـ " : "Download for ") + name;
-  }
-
-  function setBadge(ver, ok, lang) {
-    currentTag = ver; currentOk = ok;
-    var b = $("#versionBadge"), st = $("#releaseStatus");
-    if (b) b.textContent = lang === "ar"
-      ? "الإصدار " + ver + (ok ? " — الأحدث ✓" : " — روابط احتياطية")
-      : "Version " + ver + (ok ? " — latest ✓" : " — fallback links");
-    if (st) st.textContent = lang === "ar"
-      ? (ok ? "تم التحقق — كل الروابط من github.com." : "روابط احتياطية — راجع صفحة الإصدارات.")
-      : (ok ? "Verified — all links from github.com." : "Fallback links — see the Releases page.");
-  }
-
-  function upgradeLinks(tag, assets, lang) {
-    var ver = tag.replace(/^v/, "");
-    $$("[data-asset]").forEach(function (a) {
-      var key = a.getAttribute("data-asset");
-      var fname = fileFor(key, ver);
-      if (!fname) return;
-      var url = null;
-      for (var i = 0; i < (assets || []).length; i++) {
-        if (assets[i] && assets[i].name === fname && (assets[i].browser_download_url || assets[i].url)) { url = assets[i].browser_download_url || assets[i].url; break; }
-      }
-      if (!url) url = "https://github.com/" + REPO + "/releases/download/" + tag + "/" + fname;
-      a.setAttribute("href", url);
-      a.textContent = fname;
+  function updateRelease(data) {
+    if (!data || !data.tag || data.fallback) return;
+    var version = data.tag.replace(/^v/, "");
+    var byName = Object.create(null);
+    (data.assets || []).forEach(function (asset) { if (asset && asset.name) byName[asset.name] = asset; });
+    document.querySelectorAll("[data-asset]").forEach(function (link) {
+      var key = link.getAttribute("data-asset");
+      var name = filename(key, version);
+      var asset = byName[name];
+      if (!name || !asset) return;
+      link.href = asset.browser_download_url || asset.url || "https://github.com/" + REPO + "/releases/download/" + data.tag + "/" + name;
     });
-    setBadge(tag, true, lang);
-    initSmart(lang);
+    var badge = $("#versionBadge");
+    var status = $("#releaseStatus");
+    if (badge) badge.textContent = labels.latest + " " + data.tag;
+    if (status) status.textContent = labels.github;
+    updateRecommendation();
   }
 
-  // Release info comes from same-origin release.json (refreshed hourly by the
-  // sync-release workflow with an authenticated API call). The browser never
-  // calls api.github.com directly: a failing cross-origin request would log a
-  // console error (Best-Practices penalty) and hit unauthenticated rate limits.
-  function initRelease(lang) {
-    setBadge("v" + FALLBACK_VER, false, lang);
-    if (typeof fetch !== "function") return;
-    fetch("release.json", { cache: "no-cache" }).then(function (r) {
-      if (!r.ok) throw new Error("http " + r.status);
-      return r.json();
-    }).then(function (j) {
-      if (!j || !j.tag) throw new Error("bad payload");
-      if (j.fallback) { setBadge(j.tag, false, lang); return; }
-      upgradeLinks(j.tag, j.assets, lang);
-    }).catch(function () {
-      setBadge("v" + FALLBACK_VER, false, lang);
-    });
-  }
-
-  var lang = getLang();
-  setLang(lang);
   initTheme();
+  updateRecommendation();
   initCopy();
-  initSmart(lang);
-  initRelease(lang);
-
-  var lb = $("#langBtn");
-  if (lb) lb.addEventListener("click", function () {
-    lang = (document.documentElement.lang === "ar") ? "en" : "ar";
-    try {
-      var u = new URL(location.href);
-      u.searchParams.set("lang", lang);
-      history.replaceState(null, "", u.toString());
-    } catch (e) {}
-    setLang(lang);
-    initSmart(lang);
-    setBadge(currentTag, currentOk, lang);
-  });
-})();
+  if (typeof fetch === "function") {
+    fetch((lang === "ar" ? "../" : "") + "release.json", { cache: "no-cache" })
+      .then(function (response) { if (!response.ok) throw new Error("Release data unavailable"); return response.json(); })
+      .then(updateRelease)
+      .catch(function () {});
+  }
+  if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+    navigator.userAgentData.getHighEntropyValues(["architecture"]).then(updateRecommendation).catch(function () {});
+  }
+}());

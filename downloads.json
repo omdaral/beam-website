@@ -1,21 +1,21 @@
 {
-  "repo": "AhmedFaseh/beam-fileshare",
-  "fallback_version": "1.7.0",
+  "repo": "omdaral/beam-fileshare",
+  "fallback_version": "1.7.1",
   "one_liner": "curl -sSL https://raw.githubusercontent.com/AhmedFaseh/beam-fileshare/main/get-beam.sh | bash -s -- --install",
-  "releases_page": "https://github.com/AhmedFaseh/beam-fileshare/releases/latest",
-  "api_latest": "https://api.github.com/repos/AhmedFaseh/beam-fileshare/releases/latest",
+  "releases_page": "https://github.com/omdaral/beam-fileshare/releases/latest",
+  "api_latest": "https://api.github.com/repos/omdaral/beam-fileshare/releases/latest",
   "assets": {
-    "linux-amd64": "Beam-1.7.0-linux-amd64.tar.gz",
-    "linux-arm64": "Beam-1.7.0-linux-arm64.tar.gz",
-    "windows-amd64": "Beam-1.7.0-windows-amd64.zip",
-    "windows-arm64": "Beam-1.7.0-windows-arm64.zip",
-    "macos-amd64": "Beam-1.7.0-macos-amd64.zip",
-    "macos-arm64": "Beam-1.7.0-macos-arm64.zip",
-    "android": "Beam-1.7.0-android.apk",
-    "deb-amd64": "beam-fileshare_1.7.0-1_amd64.deb",
-    "deb-arm64": "beam-fileshare_1.7.0-1_arm64.deb",
-    "appimage-x64": "Beam-1.7.0-x86_64.AppImage",
-    "appimage-arm": "Beam-1.7.0-aarch64.AppImage",
-    "rpm": "beam-fileshare-1.7.0-1.x86_64.rpm"
+    "windows-amd64": "Beam-1.7.1-windows-amd64.zip",
+    "windows-arm64": "Beam-1.7.1-windows-arm64.zip",
+    "linux-amd64": "Beam-1.7.1-linux-amd64.tar.gz",
+    "linux-arm64": "Beam-1.7.1-linux-arm64.tar.gz",
+    "macos-arm64": "Beam-1.7.1-macos-arm64.zip",
+    "macos-amd64": "Beam-1.7.1-macos-amd64.zip",
+    "android": "Beam-1.7.1-android.apk",
+    "deb-amd64": "beam-fileshare_1.7.1-1_amd64.deb",
+    "deb-arm64": "beam-fileshare_1.7.1-1_arm64.deb",
+    "appimage-x64": "Beam-1.7.1-x86_64.AppImage",
+    "appimage-arm": "Beam-1.7.1-aarch64.AppImage",
+    "rpm": "beam-fileshare-1.7.1-1.x86_64.rpm"
   }
 }

@@ -1,43 +1,30 @@
-# Beam — Official Website (omdaral/beam-website)
+# Beam — Official Website
 
 Live site: **https://omdaral.github.io/beam-website/**
 
-Official single-page site for Beam file-sharing: English (LTR) primary + Arabic (RTL) fully supported,
-direct downloads from GitHub Releases (`AhmedFaseh/beam-fileshare`), Lighthouse
-100/100/100/100 gate on every PR.
+Official bilingual landing page and download guide for Beam file sharing. The
+English page is at `/`; the statically rendered Arabic page is at `/ar/`.
 
-## Structure
+## Source and build
 
-- `index.html` — the whole page (inline critical CSS, no frameworks, no webfonts)
-- `app.js` — vanilla JS: reads `release.json`, rewrites download links,
-  OS auto-detect, AR/EN toggle, theme toggle, copy buttons.
-  The browser never calls api.github.com directly (a failed cross-origin
-  request logs a console error = Lighthouse Best-Practices penalty).
-- `release.json` — latest release snapshot (same-origin, always 200).
-  Refreshed hourly by `.github/workflows/sync-release.yml` with an
-  authenticated API call; untouched while the app repo is private/unreleased.
-- `downloads.json` — static fallback data used by docs and CI validation.
-- `assets/` — `logo.svg` (Beam identity) + `og.svg` (share cover)
-- `sitemap.xml` / `robots.txt` / `manifest.webmanifest` / `404.html` / `.nojekyll`
-- `.github/workflows/pages.yml` — build + deploy to GitHub Pages
-- `.github/workflows/lighthouse.yml` — must stay 100 in all 4 categories
+- `page.template.html` — shared semantic page structure.
+- `content/en.json` and `content/ar.json` — localized copy, metadata, and FAQs.
+- `assets/site.css` — inline-critical responsive design; no external fonts or UI libraries.
+- `build_site.py` — writes `index.html`, `ar/index.html`, `downloads.json`, and `sitemap.xml` from the current `release.json`.
+- `app.js` — theme switch, device download recommendation, current release links, and installer copy action.
+- `release.json` — current release snapshot, synced hourly from the app repository.
+- `robots.txt`, `sitemap.xml`, and the Google / IndexNow verification files — crawler discovery and ownership verification.
 
 ## Local preview
 
 ```bash
+python3 build_site.py
 python3 -m http.server 8080
-# open http://127.0.0.1:8080/
+# open http://127.0.0.1:8080/ or http://127.0.0.1:8080/ar/
 ```
 
 ## Deployment
 
-Push to `main` → the `Pages` workflow deploys automatically.
-Source: GitHub Actions (Settings → Pages → Source: GitHub Actions).
-
-## Org management
-
-- No secrets needed — fully static, read-only GitHub API.
-- `CODEOWNERS` points at the maintainers; protect `main` (require Pages +
-  Lighthouse checks).
-- Download links intentionally point at `AhmedFaseh/beam-fileshare` releases;
-  the app repo has not moved.
+Push to `main` → GitHub Actions builds the localized pages and deploys GitHub Pages.
+After each deployment, the workflow submits the English and Arabic URLs to IndexNow.
+The hourly release sync updates the static download snapshot and triggers another Pages deployment.

@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "url": ["http://localhost:8080/", "http://localhost:8080/?lang=ar"],
+      "url": ["http://localhost:8080/", "http://localhost:8080/ar/"],
       "numberOfRuns": 3
     },
     "assert": {

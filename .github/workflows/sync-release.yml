@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   sync:
@@ -29,7 +30,7 @@ jobs:
           HTTP="$(curl -sL --max-redirs 3 -o /tmp/rel.json -w '%{http_code}' --max-time 30 \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/AhmedFaseh/beam-fileshare/releases/latest)"
+            https://api.github.com/repos/omdaral/beam-fileshare/releases/latest)"
           echo "API status: $HTTP"
           if [ "$HTTP" != "200" ]; then
             echo "::warning::latest release unavailable (HTTP $HTTP) — keeping existing release.json"
@@ -45,7 +46,7 @@ jobs:
           assets = [{"name": a["name"], "url": a["browser_download_url"]}
                     for a in (j.get("assets") or [])
                     if a.get("name") and a.get("browser_download_url")]
-          out = {"repo": "AhmedFaseh/beam-fileshare", "tag": tag,
+          out = {"repo": "omdaral/beam-fileshare", "tag": tag,
                  "published_at": j.get("published_at"),
                  "fetched_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                  "fallback": False, "assets": assets}

@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build localized pages from the current release
+        run: python3 build_site.py
       - name: Validate static site
         run: |
           test -f index.html || { echo "index.html missing"; exit 1; }
@@ -40,7 +42,7 @@ jobs:
           if grep -RoiE '<script[^>]+src="http' . --include='*.html'; then
             echo "external script found — keep JS local for 100 score"; exit 1;
           fi
-          echo "size report:"; du -sh .; ls -la index.html app.js
+          echo "size report:"; du -sh .; ls -la index.html ar/index.html app.js
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -54,3 +56,22 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  indexnow:
+    needs: deploy
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Notify IndexNow about the English and Arabic pages
+        run: |
+          KEY="$(cat 7209de92f0507d41896aae3be1c8b4b6.txt)"
+          CODE="$(curl -sS --max-time 20 -o /tmp/indexnow-response.txt -w '%{http_code}' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data "{\"host\":\"omdaral.github.io\",\"key\":\"$KEY\",\"keyLocation\":\"https://omdaral.github.io/beam-website/7209de92f0507d41896aae3be1c8b4b6.txt\",\"urlList\":[\"https://omdaral.github.io/beam-website/\",\"https://omdaral.github.io/beam-website/ar/\"]}" \
+            https://api.indexnow.org/indexnow)"
+          echo "IndexNow response: $CODE"
+          if [ "$CODE" -lt 200 ] || [ "$CODE" -ge 300 ]; then
+            cat /tmp/indexnow-response.txt
+            exit 1
+          fi

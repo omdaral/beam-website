@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="{{locale}}" dir="{{dir}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{{canonical}}">
+<link rel="alternate" hreflang="en" href="{{url_en}}">
+<link rel="alternate" hreflang="ar" href="{{url_ar}}">
+<link rel="alternate" hreflang="x-default" href="{{url_en}}">
+<meta name="theme-color" content="#f7f5f0">
+<meta property="og:type" content="website">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:site_name" content="Beam">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{og_description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{visual_alt}}">
+<meta property="og:locale" content="{{og_locale}}">
+<meta property="og:locale:alternate" content="{{other_og_locale}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{og_description}}">
+<meta name="twitter:image" content="{{og_image}}">
+<link rel="icon" href="{{asset_prefix}}assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{asset_prefix}}assets/logo.svg">
+<link rel="manifest" href="{{manifest_url}}">
+<script>(function(){var l=new URLSearchParams(location.search).get("lang");var a=/\/ar\/?$/.test(location.pathname);if(l==="ar"&&!a)location.replace("ar/");else if(l==="en"&&a)location.replace("../");})();</script>
+<style>
+{{styles}}
+</style>
+<script type="application/ld+json">{{structured_data}}</script>
+</head>
+<body>
+<a class="skip" href="#main">{{skip}}</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="{{home_url}}" aria-label="Beam — {{skip}}">
+      <img src="{{asset_prefix}}assets/logo.svg" width="40" height="40" alt="" fetchpriority="high">
+      <span>Beam</span>
+    </a>
+    <nav class="main-nav" aria-label="{{nav_label}}">
+      <a href="#download">{{nav_download}}</a>
+      <a href="#how">{{nav_how}}</a>
+      <a href="#features">{{nav_features}}</a>
+      <a href="#faq">{{nav_faq}}</a>
+    </nav>
+    <div class="controls">
+      <a class="lang" href="{{language_url}}" hreflang="{{other_locale}}" lang="{{other_locale}}">{{switch_lang}}</a>
+      <button class="theme" id="themeBtn" type="button" aria-label="{{theme_label}}" aria-pressed="false">◐</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span>{{hero_eyebrow}}</p>
+      <h1 id="hero-title">{{h1}}</h1>
+      <p class="lead">{{lead}}</p>
+      <div class="hero-actions">
+        <a class="button primary" id="smartDownload" href="#download" data-default="{{cta_download}}" data-prefix="{{cta_smart_prefix}}" data-ios-label="{{cta_ios}}">{{cta_download}}</a>
+        <a class="button secondary" href="#how">{{cta_how}}</a>
+      </div>
+      <p class="hero-note"><span class="local-dot" aria-hidden="true"></span>{{hero_note}}</p>
+      <p class="release-line"><span id="versionBadge">{{version_label}} {{release_tag}}</span><span class="status-dot" aria-hidden="true"></span><span id="releaseStatus">{{license}}</span></p>
+    </div>
+    <figure class="transfer-visual" aria-label="{{visual_alt}}">
+      <span class="orbit orbit-one" aria-hidden="true"></span>
+      <span class="orbit orbit-two" aria-hidden="true"></span>
+      <div class="device laptop" aria-hidden="true">
+        <div class="screen"><div class="screen-top"><i></i><i></i><i></i></div><div class="screen-file"><span class="file-icon">PDF</span><span class="file-lines"><i></i><i></i><i></i></span><b>notes.pdf</b></div><div class="screen-file second"><span class="file-icon image-icon">JPG</span><span class="file-lines"><i></i><i></i><i></i></span><b>weekend.jpg</b></div></div>
+        <div class="laptop-base"></div>
+      </div>
+      <div class="device phone" aria-hidden="true">
+        <div class="phone-camera"></div><div class="phone-screen"><span class="phone-label">BEAM</span><div class="phone-file">⇧<b>share</b></div><div class="phone-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="phone-ready">Ready to share</span></div>
+      </div>
+      <div class="beam-link" aria-hidden="true"><span>•••</span></div>
+      <span class="transfer-caption">{{visual_caption}}</span>
+    </figure>
+  </section>
+  <section class="proof wrap" aria-label="{{hero_note}}">
+    <p><strong>{{proof_one_title}}</strong><span>{{proof_one_text}}</span></p>
+    <p><strong>{{proof_two_title}}</strong><span>{{proof_two_text}}</span></p>
+    <p><strong>{{proof_three_title}}</strong><span>{{proof_three_text}}</span></p>
+  </section>
+  <section class="section wrap" id="how" aria-labelledby="how-title">
+    <div class="section-heading"><h2 id="how-title">{{how_title}}</h2><p>{{how_intro}}</p></div>
+    <ol class="steps">
+      <li><span class="step-no">01</span><h3>{{step1_title}}</h3><p>{{step1_text}}</p></li>
+      <li><span class="step-no">02</span><h3>{{step2_title}}</h3><p>{{step2_text}}</p></li>
+      <li><span class="step-no">03</span><h3>{{step3_title}}</h3><p>{{step3_text}}</p></li>
+    </ol>
+  </section>
+  <section class="section downloads" id="download" aria-labelledby="download-title">
+    <div class="wrap">
+      <div class="section-heading download-heading"><div><h2 id="download-title">{{download_title}}</h2><p>{{download_intro}}</p></div><span class="free-mark">{{hero_eyebrow}}</span></div>
+      <div class="download-grid">{{download_cards}}</div>
+      <div class="phone-note" id="iphone-note"><div><h3>{{download_iphone_title}}</h3><p>{{download_iphone_text}}</p></div><span class="phone-mark" aria-hidden="true">↗</span></div>
+      <p class="checksum-note" id="verify">{{checksum_text}} <a href="{{release_url}}">{{checksum_link}}</a></p>
+      <details class="more-builds"><summary>{{more_downloads}}</summary><div class="alt-downloads">{{alternate_downloads}}</div></details>
+      <details class="terminal"><summary>{{terminal_title}}</summary><div class="command"><code id="oneline">curl -sSL https://raw.githubusercontent.com/omdaral/beam-fileshare/main/get-beam.sh | bash -s -- --install</code><button id="copyBtn" type="button" aria-live="polite">{{copy}}</button></div><p class="small-note">{{terminal_note}}</p></details>
+    </div>
+  </section>
+  <section class="section wrap" id="features" aria-labelledby="features-title">
+    <div class="section-heading"><h2 id="features-title">{{features_title}}</h2></div>
+    <div class="feature-grid">
+      <article class="feature"><span class="feature-mark" aria-hidden="true">01</span><h3>{{feature_local_title}}</h3><p>{{feature_local_text}}</p></article>
+      <article class="feature"><span class="feature-mark" aria-hidden="true">02</span><h3>{{feature_receiver_title}}</h3><p>{{feature_receiver_text}}</p></article>
+      <article class="feature"><span class="feature-mark" aria-hidden="true">03</span><h3>{{feature_resume_title}}</h3><p>{{feature_resume_text}}</p></article>
+      <article class="feature"><span class="feature-mark" aria-hidden="true">04</span><h3>{{feature_open_title}}</h3><p>{{feature_open_text}}</p></article>
+    </div>
+  </section>
+  <section class="trust">
+    <div class="wrap trust-inner"><span class="trust-icon" aria-hidden="true">✓</span><div><h2>{{trust_title}}</h2><p>{{trust_text}}</p></div><a href="{{github_url}}">{{github}}</a></div>
+  </section>
+  <section class="section wrap faq" id="faq" aria-labelledby="faq-title">
+    <div class="section-heading"><h2 id="faq-title">{{faq_title}}</h2></div>
+    <div class="faq-list">{{faq_items}}</div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="wrap footer-row">
+    <a class="footer-brand" href="{{home_url}}">Beam</a>
+    <p>{{footer}} <a href="{{github_url}}">{{github}}</a> · {{license}}</p>
+    <div class="footer-links"><a href="{{release_url}}">{{releases}}</a><a href="{{help_url}}">{{help}}</a></div>
+  </div>
+</footer>
+<script src="{{app_js}}" defer></script>
+<noscript><p class="noscript">{{noscript_text}}</p></noscript>
+</body>
+</html>

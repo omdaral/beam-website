@@ -1,13 +1,17 @@
 {
   "background_color": "#f7f5f0",
-  "description": "Beam — مشاركة ملفاتك بين أجهزتك عبر الواي فاي المحلي.",
+  "description": "Beam FileShare — مشاركة الملفات عبر شبكة واي فاي محلية بلا رفع سحابي.",
   "display": "standalone",
   "icons": [
-    {"sizes": "any", "src": "assets/logo.svg", "type": "image/svg+xml"}
+    {
+      "sizes": "any",
+      "src": "assets/logo.svg",
+      "type": "image/svg+xml"
+    }
   ],
   "lang": "ar",
-  "name": "Beam — مشاركة الملفات",
-  "short_name": "Beam",
+  "name": "Beam FileShare — مشاركة الملفات محليًا",
+  "short_name": "Beam Share",
   "start_url": "/beam-website/ar/",
   "scope": "/beam-website/ar/",
   "theme_color": "#f7f5f0"

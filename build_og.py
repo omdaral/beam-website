@@ -52,16 +52,16 @@ def make(lang: str) -> None:
     draw.line((92, 123, 116, 86), fill=INK, width=7)
     draw.line((111, 125, 128, 99), fill=INK, width=6)
     draw.ellipse((121, 117, 132, 128), fill=ACCENT)
-    draw.text((157, 78), "Beam", font=font(BOLD, 48), fill=INK)
+    draw.text((157, 78), "Beam FileShare", font=font(BOLD, 48), fill=INK)
     if lang == "ar":
-        title = "انقل ملفاتك بين الهاتف\nوالكمبيوتر عبر الواي فاي"
-        subtitle = "المستلم يحتاج إلى المتصفح فقط"
-        note = "مجاني ومفتوح المصدر · من دون سحابة"
+        title = "شارك الملفات محليًا\nعبر الواي فاي بلا سحابة"
+        subtitle = "ويندوز · ماك · لينكس · أندرويد"
+        note = "مجاني ومفتوح المصدر · المتصفح يكفي للمستلم"
         rtl = True
     else:
-        title = "Share files over Wi-Fi.\nNo receiver app needed."
-        subtitle = "Move files between your phone and computer"
-        note = "Free and open source · no cloud upload"
+        title = "Local Wi-Fi file sharing.\nNo cloud or receiver app."
+        subtitle = "Windows · macOS · Linux · Android"
+        note = "Free and open source · browser-based sharing"
         rtl = False
     ftitle = font(AR if rtl else BOLD, 37 if rtl else 35)
     fsub = font(AR if rtl else REG, 22)
@@ -71,7 +71,7 @@ def make(lang: str) -> None:
     draw.multiline_text((tx, 183), title, font=ftitle, fill=INK, spacing=13, anchor="ra" if rtl else "la", direction="rtl" if rtl else "ltr", align="right" if rtl else "left")
     draw.text((tx, 342), subtitle, font=fsub, fill=MUTED, anchor=anchor, direction="rtl" if rtl else "ltr")
     draw.rounded_rectangle((78, 425, 505, 485), radius=30, fill=FOREST)
-    callout = "تنزيل مجاني" if rtl else "Free downloads for desktop + Android"
+    callout = "تنزيل Beam FileShare" if rtl else "Download Beam FileShare"
     draw.text((291, 445), callout, font=font(AR if rtl else BOLD, 19), fill="white", anchor="mm", direction="rtl" if rtl else "ltr")
     draw.text((78, 554), "omdaral.github.io/beam-website", font=font(REG, 16), fill=MUTED)
     draw_device(draw)

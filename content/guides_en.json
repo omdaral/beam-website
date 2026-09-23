@@ -1,0 +1,73 @@
+{
+  "nav_home": "Home",
+  "nav_download": "Download Beam FileShare",
+  "breadcrumb_guides": "Guides",
+  "read_more": "Read the other guide",
+  "back_guides": "All Beam FileShare guides",
+  "wifi": {
+    "slug": "share-files-over-wifi",
+    "title": "Beam FileShare: Share Files Over Wi-Fi Without Cloud",
+    "description": "Learn how to share files over local Wi-Fi with Beam FileShare. Run one host, join from another device's browser, and avoid cloud uploads.",
+    "h1": "How to share files over Wi-Fi without cloud uploads",
+    "intro": "Beam FileShare turns one computer or Android device into a local file host. Other devices open its link in a browser to upload or download files over the same network. The transfer does not use cloud storage.",
+    "sections": [
+      {
+        "heading": "What you need",
+        "paragraphs": ["Install Beam FileShare on the device that will host the files. Connect the host and the devices joining it to a trusted local Wi-Fi network that allows devices to communicate with one another. Internet access is not needed for a transfer after Beam is installed.", "Some guest Wi-Fi networks enable client isolation, which prevents connected devices from reaching each other. Use a network that allows local-device connections if the link cannot be opened."]
+      },
+      {
+        "heading": "Start a local file transfer",
+        "steps": ["Download and start Beam FileShare on the device containing the files. The desktop app and Android app can act as the host.", "Connect the other devices to the same Wi-Fi network. If the network blocks local connections, switch to a trusted network or use Beam's hotspot mode where available.", "Open the shared local address shown by Beam, or scan its QR code, from another device's browser. The page lets connected users upload or download files without installing Beam on the receiving device."]
+      },
+      {
+        "heading": "Know who can access the shared folder",
+        "paragraphs": ["Beam FileShare moves files across your local network; it does not upload them to a cloud-storage service. By default, the shared page does not require separate accounts or passwords. Anyone who can reach it may upload, download, and delete shared files, so use a network you trust and share only files you intend to make available.", "Local transfers use HTTP by default. Beam also provides an optional TLS mode; when enabled, follow the app's fingerprint guidance for its self-signed certificate."]
+      },
+      {
+        "heading": "If the other device cannot connect",
+        "bullets": ["Confirm both devices are on the same Wi-Fi network and can communicate locally; a guest network may block this.", "On the host, allow Beam through the operating-system firewall for a private or trusted network.", "Reopen the current address or scan a fresh QR code shown by the host."]
+      },
+      {
+        "heading": "Phones and tablets can join from a browser",
+        "paragraphs": ["Android, iPhone, and iPad can open the host's link in a browser. The receiving device does not need the Beam app; install the Android app only when you want the Android device itself to host files."]
+      }
+    ],
+    "faq": [
+      {"q": "Does local Wi-Fi file sharing need internet?", "a": "No. Once Beam FileShare is installed, transfers work over a local network that lets the devices communicate. Internet is needed to download Beam or check for updates."},
+      {"q": "Do receivers need to install Beam?", "a": "No. Receivers open the host's link in a browser. Install Beam only on the device hosting the shared folder."}
+    ]
+  },
+  "android": {
+    "slug": "android-to-windows-file-sharing",
+    "title": "Beam FileShare: Transfer Files Between Android and Windows",
+    "description": "Transfer files between Android and Windows over local Wi-Fi with Beam FileShare. Host on either device and use a browser on the other—no cloud upload.",
+    "h1": "Transfer files between Android and Windows over Wi-Fi",
+    "intro": "With Beam FileShare, either an Android phone or a Windows PC can host the shared files. The other device joins through a browser on the same local Wi-Fi network, so the files do not need to be uploaded to cloud storage.",
+    "sections": [
+      {
+        "heading": "Choose which device will host the files",
+        "paragraphs": ["If the files are on Windows, download and run the Windows build. If the files are on Android, install Beam's Android APK and start the host from the app. In both cases, the other device can join from its browser without installing Beam."]
+      },
+      {
+        "heading": "Windows hosts the files; Android joins",
+        "steps": ["Install and start Beam FileShare on the Windows PC. Keep the files in Beam's shared folder.", "Connect the Android phone to the same Wi-Fi network as the PC.", "Scan the QR code on the Windows screen with the phone camera, or open the displayed local address in the phone's browser.", "Use the shared page to download files to Android or upload files from the phone to the host."]
+      },
+      {
+        "heading": "Android hosts the files; Windows joins",
+        "steps": ["Install Beam FileShare on Android from the project's Releases page and start the server in the app.", "Connect Windows to the same Wi-Fi network. Open the address or QR link shown by Beam in a Windows browser.", "Use the browser page to download files from the Android host or upload files from Windows."]
+      },
+      {
+        "heading": "Fix common connection problems",
+        "bullets": ["Both devices must be on a network that allows local traffic. Guest Wi-Fi or client isolation can block the connection even when both devices show Wi-Fi access.", "If Windows asks about the firewall, allow Beam on a private or trusted network.", "Check that you opened the current local address from the running host. A local address is only reachable while the host is running and the devices can reach the same network."]
+      },
+      {
+        "heading": "Use a trusted network",
+        "paragraphs": ["The shared page is available to devices that can reach the host on the network. By default, there are no separate receiver accounts or passwords, and visitors can upload, download, and delete shared files. Use a trusted Wi-Fi network and stop Beam when you finish."]
+      }
+    ],
+    "faq": [
+      {"q": "Does Beam FileShare work from Android to Windows without internet?", "a": "Yes, if both devices can communicate over the same local Wi-Fi network. Internet is not used to carry the file transfer."},
+      {"q": "Does Beam need to be installed on both devices?", "a": "No. Run Beam on the host only. The other device opens the shared link in a browser."}
+    ]
+  }
+}

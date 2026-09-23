@@ -1,16 +1,22 @@
-# Beam — Official Website
+# Beam FileShare — Official Website and Local Wi-Fi Guides
 
 Live site: **https://omdaral.github.io/beam-website/**
 
-Official bilingual landing page and download guide for Beam file sharing. The
-English page is at `/`; the statically rendered Arabic page is at `/ar/`.
+Official website for Beam FileShare, an open-source local Wi-Fi file-sharing app. It includes English and Arabic landing pages, platform downloads, and practical guides for sharing over Wi-Fi and transferring files between Android and Windows.
+
+- [Share files over Wi-Fi without cloud uploads](https://omdaral.github.io/beam-website/guides/share-files-over-wifi/)
+- [مشاركة الملفات عبر الواي فاي بلا سحابة](https://omdaral.github.io/beam-website/ar/guides/share-files-over-wifi/)
+- [Transfer files between Android and Windows](https://omdaral.github.io/beam-website/guides/android-to-windows-file-sharing/)
+- [نقل الملفات بين أندرويد وويندوز](https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/)
 
 ## Source and build
 
 - `page.template.html` — shared semantic page structure.
+- `guide.template.html` — lightweight bilingual guide-page template.
 - `content/en.json` and `content/ar.json` — localized copy, metadata, and FAQs.
+- `content/guides_en.json` and `content/guides_ar.json` — original platform and network how-to guides.
 - `assets/site.css` — inline-critical responsive design; no external fonts or UI libraries.
-- `build_site.py` — writes `index.html`, `ar/index.html`, `downloads.json`, and `sitemap.xml` from the current `release.json`.
+- `build_site.py` — writes the localized landing and guide pages, `downloads.json`, and `sitemap.xml` from the current `release.json`.
 - `app.js` — theme switch, device download recommendation, current release links, and installer copy action.
 - `release.json` — current release snapshot, synced hourly from the app repository.
 - `robots.txt`, `sitemap.xml`, and the Google / IndexNow verification files — crawler discovery and ownership verification.
@@ -26,5 +32,5 @@ python3 -m http.server 8080
 ## Deployment
 
 Push to `main` → GitHub Actions builds the localized pages and deploys GitHub Pages.
-After each deployment, the workflow submits the English and Arabic URLs to IndexNow.
+After each deployment, the workflow submits all six home and guide URLs to IndexNow.
 The hourly release sync updates the static download snapshot and triggers another Pages deployment.

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beam FileShare: نقل الملفات بين أندرويد وويندوز</title>
+<meta name="description" content="انقل الملفات بين أندرويد وويندوز عبر واي فاي محلي باستخدام Beam FileShare. اجعل أي جهاز مضيفًا وافتح الرابط من المتصفح بلا رفع سحابي.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/">
+<link rel="alternate" hreflang="en" href="https://omdaral.github.io/beam-website/guides/android-to-windows-file-sharing/">
+<link rel="alternate" hreflang="ar" href="https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/">
+<link rel="alternate" hreflang="x-default" href="https://omdaral.github.io/beam-website/guides/android-to-windows-file-sharing/">
+<meta name="theme-color" content="#f7f5f0">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Beam FileShare">
+<meta property="og:title" content="Beam FileShare: نقل الملفات بين أندرويد وويندوز">
+<meta property="og:description" content="انقل الملفات بين أندرويد وويندوز عبر واي فاي محلي باستخدام Beam FileShare. اجعل أي جهاز مضيفًا وافتح الرابط من المتصفح بلا رفع سحابي.">
+<meta property="og:url" content="https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/">
+<meta property="og:image" content="https://omdaral.github.io/beam-website/assets/og-cover-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beam FileShare: نقل الملفات بين أندرويد وويندوز">
+<meta name="twitter:description" content="انقل الملفات بين أندرويد وويندوز عبر واي فاي محلي باستخدام Beam FileShare. اجعل أي جهاز مضيفًا وافتح الرابط من المتصفح بلا رفع سحابي.">
+<meta name="twitter:image" content="https://omdaral.github.io/beam-website/assets/og-cover-ar.png">
+<link rel="icon" href="../../../assets/logo.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:light;--paper:#f7f5f0;--surface:#fffefa;--ink:#1e2926;--muted:#596661;--line:#dedfd8;--accent:#bd3f27;--mint:#e1ebe5;--forest:#203b34;--focus:#1769aa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.7 "Segoe UI",Tahoma,Arial,system-ui,sans-serif}
+a{color:var(--forest)}a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.wrap{width:min(1060px,100% - 40px);margin-inline:auto}
+.skip{position:absolute;inset-block-start:-60px;inset-inline-start:12px;padding:9px 14px;background:var(--ink);color:white;border-radius:8px}.skip:focus{inset-block-start:12px}
+.top{border-block-end:1px solid var(--line);background:var(--surface)}.bar{min-height:72px;display:flex;align-items:center;gap:22px}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-size:1.1rem;font-weight:800;text-decoration:none}.brand img{width:38px;height:38px}.nav{display:flex;align-items:center;gap:18px;margin-inline-start:auto}.nav a{font-size:.9rem;font-weight:650;text-decoration:none}.language{padding:6px 11px;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+.guide{max-width:820px;padding-block:34px 76px}.crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 26px;color:var(--muted);font-size:.84rem}.crumbs a{text-decoration:none}.eyebrow{margin:0 0 10px;color:var(--accent);font-size:.83rem;font-weight:750;letter-spacing:.03em}.guide h1{max-width:22ch;margin:0;font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.12;letter-spacing:-.04em;text-wrap:balance}.lead{margin:21px 0 0;padding:20px 22px;border-inline-start:4px solid var(--accent);border-radius:12px;background:var(--mint);font-size:1.1rem}
+.article{margin-block-start:42px}.article section{padding-block:24px;border-block-start:1px solid var(--line)}.article h2,.faq h2,.related h2{margin:0 0 12px;font-size:1.42rem;line-height:1.3}.article p{margin:10px 0}.article ol,.article ul{margin:12px 0;padding-inline-start:25px}.article li{margin-block:8px}.faq{margin-block-start:22px}.faq details{border-block-start:1px solid var(--line)}.faq details:last-child{border-block-end:1px solid var(--line)}.faq summary{padding:15px 0;cursor:pointer;font-weight:750}.faq p{margin:0;padding:0 0 16px;color:var(--muted)}
+.related{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-block-start:42px}.related a{padding:17px;border:1px solid var(--line);border-radius:13px;background:var(--surface);font-weight:700;text-decoration:none}.related a:hover{border-color:var(--accent)}.cta{display:flex;flex-wrap:wrap;gap:10px;margin-block-start:24px}.button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border:1px solid var(--forest);border-radius:999px;color:#fff;background:var(--forest);font-weight:750;text-decoration:none}.button.secondary{color:var(--forest);background:transparent}
+.footer{border-block-start:1px solid var(--line);padding-block:22px;color:var(--muted);font-size:.88rem}.footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}.footer a{color:var(--ink)}[dir=rtl] body{font-family:Tahoma,"Segoe UI",Arial,system-ui,sans-serif}[dir=rtl] .lead{border-radius:12px 0 0 12px}
+@media(max-width:620px){.wrap{width:min(100% - 30px,1060px)}.bar{min-height:64px;gap:10px}.brand{font-size:.95rem}.brand img{width:34px;height:34px}.nav{gap:10px}.nav a{font-size:.79rem}.nav .guides-link{display:none}.guide{padding-block-start:24px}.guide h1{font-size:clamp(2rem,10vw,2.8rem)}.lead{padding:16px;font-size:1rem}.related{grid-template-columns:1fr}.language{font-size:.82rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/#page","url":"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/","name":"Beam FileShare: نقل الملفات بين أندرويد وويندوز","description":"انقل الملفات بين أندرويد وويندوز عبر واي فاي محلي باستخدام Beam FileShare. اجعل أي جهاز مضيفًا وافتح الرابط من المتصفح بلا رفع سحابي.","inLanguage":"ar","isPartOf":{"@id":"https://omdaral.github.io/beam-website/#website"},"about":{"@id":"https://omdaral.github.io/beam-website/#app"},"breadcrumb":{"@id":"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://omdaral.github.io/beam-website/ar/"},{"@type":"ListItem","position":2,"name":"الشروحات","item":"https://omdaral.github.io/beam-website/ar/#guides"},{"@type":"ListItem","position":3,"name":"انقل الملفات بين أندرويد وويندوز عبر الواي فاي","item":"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/"}]},{"@type":"FAQPage","@id":"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/#faq","mainEntity":[{"@type":"Question","name":"هل يعمل Beam FileShare بين أندرويد وويندوز من دون إنترنت؟","acceptedAnswer":{"@type":"Answer","text":"نعم، إذا استطاع الجهازان التواصل عبر شبكة واي فاي محلية واحدة. لا يُستخدم الإنترنت لنقل الملفات."}},{"@type":"Question","name":"هل يجب تثبيت Beam على الجهازين؟","acceptedAnswer":{"@type":"Answer","text":"لا. شغّل Beam على الجهاز المضيف فقط؛ ويفتح الجهاز الآخر الرابط المشترك في المتصفح."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="https://omdaral.github.io/beam-website/ar/"><img src="../../../assets/logo.svg" width="38" height="38" alt=""><span>Beam FileShare</span></a>
+  <nav class="nav" aria-label="التنقل الرئيسي"><a href="https://omdaral.github.io/beam-website/ar/">الرئيسية</a><a class="guides-link" href="https://omdaral.github.io/beam-website/ar/#guides">الشروحات</a><a href="https://omdaral.github.io/beam-website/ar/#download">تنزيل Beam FileShare</a></nav>
+  <a class="language" href="https://omdaral.github.io/beam-website/guides/android-to-windows-file-sharing/" hreflang="en" lang="en">English</a>
+</div></header>
+<main id="main" class="wrap guide">
+  <nav class="crumbs" aria-label="التنقل الرئيسي"><a href="https://omdaral.github.io/beam-website/ar/">الرئيسية</a><span aria-hidden="true">/</span><a href="https://omdaral.github.io/beam-website/ar/#guides">الشروحات</a><span aria-hidden="true">/</span><span aria-current="page">انقل الملفات بين أندرويد وويندوز عبر الواي فاي</span></nav>
+  <p class="eyebrow">Beam FileShare · الشروحات</p>
+  <h1>انقل الملفات بين أندرويد وويندوز عبر الواي فاي</h1>
+  <p class="lead">يمكن لهاتف أندرويد أو كمبيوتر ويندوز استضافة الملفات باستخدام Beam FileShare. ينضم الجهاز الآخر من المتصفح عبر شبكة واي فاي محلية واحدة، فلا تحتاج إلى رفع الملفات إلى تخزين سحابي.</p>
+  <article class="article"><section><h2>اختر الجهاز الذي سيستضيف الملفات</h2>
+<p>إذا كانت الملفات على ويندوز، نزّل نسخة Windows وشغّلها. وإذا كانت على أندرويد، ثبّت ملف APK لتطبيق Beam وابدأ الخادم من التطبيق. في الحالتين ينضم الجهاز الآخر من المتصفح من دون تثبيت Beam عليه.</p>
+</section>
+<section><h2>ويندوز يستضيف الملفات وأندرويد ينضم</h2>
+<ol>
+<li>ثبّت Beam FileShare وشغّله على كمبيوتر ويندوز، وضع الملفات في مجلد Beam المشترك.</li>
+<li>صِل هاتف أندرويد بشبكة الواي فاي نفسها المتصل بها الكمبيوتر.</li>
+<li>امسح رمز QR الظاهر على شاشة ويندوز بكاميرا الهاتف، أو افتح العنوان المحلي في متصفح أندرويد.</li>
+<li>استخدم صفحة المشاركة لتنزيل الملفات إلى أندرويد أو رفع ملفات الهاتف إلى الجهاز المضيف.</li>
+</ol>
+</section>
+<section><h2>أندرويد يستضيف الملفات وويندوز ينضم</h2>
+<ol>
+<li>ثبّت Beam على أندرويد من صفحة إصدارات المشروع، ثم ابدأ الخادم من التطبيق.</li>
+<li>صِل ويندوز بشبكة الواي فاي نفسها. افتح العنوان أو رابط QR الذي يعرضه Beam في متصفح ويندوز.</li>
+<li>استخدم صفحة المتصفح لتنزيل الملفات من هاتف أندرويد أو رفع ملفات ويندوز إليه.</li>
+</ol>
+</section>
+<section><h2>حل مشاكل الاتصال الشائعة</h2>
+<ul>
+<li>يجب أن تسمح الشبكة للأجهزة بالتواصل المحلي. قد تمنع شبكة الضيوف أو خاصية عزل الأجهزة الاتصال حتى لو كان الإنترنت يعمل على الجهازين.</li>
+<li>إذا ظهر طلب من جدار حماية ويندوز، اسمح لـBeam على شبكة خاصة أو موثوقة.</li>
+<li>تأكد من فتح العنوان المحلي الحالي الذي يعرضه الجهاز المضيف وهو يعمل. لا يمكن الوصول إليه إلا ما دام المضيف يعمل والجهازان متصلين بالشبكة نفسها.</li>
+</ul>
+</section>
+<section><h2>استخدم شبكة موثوقة</h2>
+<p>تظهر صفحة المشاركة للأجهزة التي تصل إلى المضيف عبر الشبكة. افتراضيًا لا توجد حسابات أو كلمات مرور منفصلة للمستلمين، ويمكن للزوار رفع الملفات المشتركة وتنزيلها وحذفها. استخدم واي فاي تثق به وأوقف Beam عند الانتهاء.</p>
+</section></article>
+  <section class="faq" aria-labelledby="faq-title"><h2 id="faq-title">معلومات مهمة</h2><div><details><summary>هل يعمل Beam FileShare بين أندرويد وويندوز من دون إنترنت؟</summary><p>نعم، إذا استطاع الجهازان التواصل عبر شبكة واي فاي محلية واحدة. لا يُستخدم الإنترنت لنقل الملفات.</p></details>
+<details><summary>هل يجب تثبيت Beam على الجهازين؟</summary><p>لا. شغّل Beam على الجهاز المضيف فقط؛ ويفتح الجهاز الآخر الرابط المشترك في المتصفح.</p></details></div></section>
+  <nav class="related" aria-label="شروحات Beam FileShare"><a href="https://omdaral.github.io/beam-website/ar/guides/share-files-over-wifi/">Beam FileShare: مشاركة الملفات عبر الواي فاي بلا سحابة</a><a href="https://omdaral.github.io/beam-website/ar/#guides">كل شروحات Beam FileShare</a></nav>
+  <div class="cta"><a class="button" href="https://omdaral.github.io/beam-website/ar/#download">تنزيل Beam FileShare</a><a class="button secondary" href="https://github.com/omdaral/beam-fileshare">الشيفرة على GitHub</a></div>
+</main>
+<footer class="footer"><div class="wrap footer-row"><span>Beam FileShare</span><span>مشاركة مصممة لشبكتك المحلية. <a href="https://github.com/omdaral/beam-fileshare">الشيفرة على GitHub</a></span></div></footer>
+</body>
+</html>

@@ -157,6 +157,13 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
 .feature { display: grid; grid-template-columns: 38px 1fr; column-gap: 13px; padding-block: 21px; border-block-start: 1px solid var(--line); }
 .feature-mark { grid-row: span 2; padding-block-start: 4px; color: var(--accent-dark); font-size: .78rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .feature h3 { margin-block: 0 4px; }
+.guide-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.guide-card { min-height: 190px; display: flex; flex-direction: column; align-items: flex-start; padding: 22px; border: 1px solid var(--line); border-radius: 18px; color: var(--ink); background: var(--surface); text-decoration: none; transition: border-color .16s ease, transform .16s ease; }
+.guide-card:hover { transform: translateY(-2px); border-color: var(--accent-dark); }
+.guide-card h3 { margin: 0; font-size: 1.08rem; line-height: 1.4; }
+.guide-card p { margin: 8px 0 18px; color: var(--muted); font-size: .9rem; }
+.guide-card span { display: flex; gap: 7px; align-items: center; margin-block-start: auto; color: var(--forest); font-size: .86rem; font-weight: 750; }
+.guide-card b { color: var(--accent-dark); }
 .trust { color: #f7f5f0; background: var(--forest); }
 .trust-inner { min-height: 174px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px; padding-block: 25px; }
 .trust-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #789086; border-radius: 50%; color: #d2e7d9; font-size: 1.15rem; }
@@ -223,7 +230,7 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
   .steps li, .steps li:first-child { padding: 17px 0; border-inline-start: 0; border-block-end: 1px solid var(--line); }
   .steps li:last-child { border-block-end: 0; }
   .steps h3 { margin-block-start: 5px; }
-  .download-grid, .feature-grid { grid-template-columns: 1fr; }
+  .download-grid, .feature-grid, .guide-grid { grid-template-columns: 1fr; }
   .platform-summary { min-height: 68px; padding-inline: 14px; }
   .platform-content { padding-inline: 14px; }
   .build-choice { gap: 7px; padding-inline: 9px; }

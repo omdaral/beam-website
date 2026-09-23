@@ -6,14 +6,14 @@
   var $ = function (selector, root) { return (root || document).querySelector(selector); };
   var lang = document.documentElement.lang === "ar" ? "ar" : "en";
   var labels = lang === "ar" ? {
-    prefix: "نزّل Beam لـ", ios: "استخدم Beam من Safari",
+    prefix: "نزّل Beam FileShare لـ", ios: "استخدم Beam من Safari",
     windows: "ويندوز 64-بت", windowsArm: "ويندوز ARM",
     linux: "لينكس 64-بت", linuxArm: "لينكس ARM",
     mac: "macOS Apple Silicon", macIntel: "macOS Intel", android: "أندرويد",
     copied: "تم النسخ", latest: "أحدث إصدار", github: "روابط تنزيل GitHub",
     fallback: "روابط الإصدار الحالي", copyError: "تعذّر النسخ — حدّد الأمر وانسخه يدويًا"
   } : {
-    prefix: "Download Beam for", ios: "Use Beam from Safari",
+    prefix: "Download Beam FileShare for", ios: "Use Beam from Safari",
     windows: "Windows 64-bit", windowsArm: "Windows ARM",
     linux: "Linux 64-bit", linuxArm: "Linux ARM",
     mac: "macOS Apple Silicon", macIntel: "macOS Intel", android: "Android",

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beam FileShare: Share Files Over Wi-Fi Without Cloud</title>
+<meta name="description" content="Learn how to share files over local Wi-Fi with Beam FileShare. Run one host, join from another device&#x27;s browser, and avoid cloud uploads.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://omdaral.github.io/beam-website/guides/share-files-over-wifi/">
+<link rel="alternate" hreflang="en" href="https://omdaral.github.io/beam-website/guides/share-files-over-wifi/">
+<link rel="alternate" hreflang="ar" href="https://omdaral.github.io/beam-website/ar/guides/share-files-over-wifi/">
+<link rel="alternate" hreflang="x-default" href="https://omdaral.github.io/beam-website/guides/share-files-over-wifi/">
+<meta name="theme-color" content="#f7f5f0">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Beam FileShare">
+<meta property="og:title" content="Beam FileShare: Share Files Over Wi-Fi Without Cloud">
+<meta property="og:description" content="Learn how to share files over local Wi-Fi with Beam FileShare. Run one host, join from another device&#x27;s browser, and avoid cloud uploads.">
+<meta property="og:url" content="https://omdaral.github.io/beam-website/guides/share-files-over-wifi/">
+<meta property="og:image" content="https://omdaral.github.io/beam-website/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beam FileShare: Share Files Over Wi-Fi Without Cloud">
+<meta name="twitter:description" content="Learn how to share files over local Wi-Fi with Beam FileShare. Run one host, join from another device&#x27;s browser, and avoid cloud uploads.">
+<meta name="twitter:image" content="https://omdaral.github.io/beam-website/assets/og-cover.png">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:light;--paper:#f7f5f0;--surface:#fffefa;--ink:#1e2926;--muted:#596661;--line:#dedfd8;--accent:#bd3f27;--mint:#e1ebe5;--forest:#203b34;--focus:#1769aa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.7 "Segoe UI",Tahoma,Arial,system-ui,sans-serif}
+a{color:var(--forest)}a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.wrap{width:min(1060px,100% - 40px);margin-inline:auto}
+.skip{position:absolute;inset-block-start:-60px;inset-inline-start:12px;padding:9px 14px;background:var(--ink);color:white;border-radius:8px}.skip:focus{inset-block-start:12px}
+.top{border-block-end:1px solid var(--line);background:var(--surface)}.bar{min-height:72px;display:flex;align-items:center;gap:22px}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-size:1.1rem;font-weight:800;text-decoration:none}.brand img{width:38px;height:38px}.nav{display:flex;align-items:center;gap:18px;margin-inline-start:auto}.nav a{font-size:.9rem;font-weight:650;text-decoration:none}.language{padding:6px 11px;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+.guide{max-width:820px;padding-block:34px 76px}.crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 26px;color:var(--muted);font-size:.84rem}.crumbs a{text-decoration:none}.eyebrow{margin:0 0 10px;color:var(--accent);font-size:.83rem;font-weight:750;letter-spacing:.03em}.guide h1{max-width:22ch;margin:0;font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.12;letter-spacing:-.04em;text-wrap:balance}.lead{margin:21px 0 0;padding:20px 22px;border-inline-start:4px solid var(--accent);border-radius:12px;background:var(--mint);font-size:1.1rem}
+.article{margin-block-start:42px}.article section{padding-block:24px;border-block-start:1px solid var(--line)}.article h2,.faq h2,.related h2{margin:0 0 12px;font-size:1.42rem;line-height:1.3}.article p{margin:10px 0}.article ol,.article ul{margin:12px 0;padding-inline-start:25px}.article li{margin-block:8px}.faq{margin-block-start:22px}.faq details{border-block-start:1px solid var(--line)}.faq details:last-child{border-block-end:1px solid var(--line)}.faq summary{padding:15px 0;cursor:pointer;font-weight:750}.faq p{margin:0;padding:0 0 16px;color:var(--muted)}
+.related{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-block-start:42px}.related a{padding:17px;border:1px solid var(--line);border-radius:13px;background:var(--surface);font-weight:700;text-decoration:none}.related a:hover{border-color:var(--accent)}.cta{display:flex;flex-wrap:wrap;gap:10px;margin-block-start:24px}.button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border:1px solid var(--forest);border-radius:999px;color:#fff;background:var(--forest);font-weight:750;text-decoration:none}.button.secondary{color:var(--forest);background:transparent}
+.footer{border-block-start:1px solid var(--line);padding-block:22px;color:var(--muted);font-size:.88rem}.footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}.footer a{color:var(--ink)}[dir=rtl] body{font-family:Tahoma,"Segoe UI",Arial,system-ui,sans-serif}[dir=rtl] .lead{border-radius:12px 0 0 12px}
+@media(max-width:620px){.wrap{width:min(100% - 30px,1060px)}.bar{min-height:64px;gap:10px}.brand{font-size:.95rem}.brand img{width:34px;height:34px}.nav{gap:10px}.nav a{font-size:.79rem}.nav .guides-link{display:none}.guide{padding-block-start:24px}.guide h1{font-size:clamp(2rem,10vw,2.8rem)}.lead{padding:16px;font-size:1rem}.related{grid-template-columns:1fr}.language{font-size:.82rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/#page","url":"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/","name":"Beam FileShare: Share Files Over Wi-Fi Without Cloud","description":"Learn how to share files over local Wi-Fi with Beam FileShare. Run one host, join from another device's browser, and avoid cloud uploads.","inLanguage":"en","isPartOf":{"@id":"https://omdaral.github.io/beam-website/#website"},"about":{"@id":"https://omdaral.github.io/beam-website/#app"},"breadcrumb":{"@id":"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://omdaral.github.io/beam-website/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://omdaral.github.io/beam-website/#guides"},{"@type":"ListItem","position":3,"name":"How to share files over Wi-Fi without cloud uploads","item":"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/"}]},{"@type":"FAQPage","@id":"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/#faq","mainEntity":[{"@type":"Question","name":"Does local Wi-Fi file sharing need internet?","acceptedAnswer":{"@type":"Answer","text":"No. Once Beam FileShare is installed, transfers work over a local network that lets the devices communicate. Internet is needed to download Beam or check for updates."}},{"@type":"Question","name":"Do receivers need to install Beam?","acceptedAnswer":{"@type":"Answer","text":"No. Receivers open the host's link in a browser. Install Beam only on the device hosting the shared folder."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="https://omdaral.github.io/beam-website/"><img src="../../assets/logo.svg" width="38" height="38" alt=""><span>Beam FileShare</span></a>
+  <nav class="nav" aria-label="Main navigation"><a href="https://omdaral.github.io/beam-website/">Home</a><a class="guides-link" href="https://omdaral.github.io/beam-website/#guides">Guides</a><a href="https://omdaral.github.io/beam-website/#download">Download Beam FileShare</a></nav>
+  <a class="language" href="https://omdaral.github.io/beam-website/ar/guides/share-files-over-wifi/" hreflang="ar" lang="ar">العربية</a>
+</div></header>
+<main id="main" class="wrap guide">
+  <nav class="crumbs" aria-label="Main navigation"><a href="https://omdaral.github.io/beam-website/">Home</a><span aria-hidden="true">/</span><a href="https://omdaral.github.io/beam-website/#guides">Guides</a><span aria-hidden="true">/</span><span aria-current="page">How to share files over Wi-Fi without cloud uploads</span></nav>
+  <p class="eyebrow">Beam FileShare · Guides</p>
+  <h1>How to share files over Wi-Fi without cloud uploads</h1>
+  <p class="lead">Beam FileShare turns one computer or Android device into a local file host. Other devices open its link in a browser to upload or download files over the same network. The transfer does not use cloud storage.</p>
+  <article class="article"><section><h2>What you need</h2>
+<p>Install Beam FileShare on the device that will host the files. Connect the host and the devices joining it to a trusted local Wi-Fi network that allows devices to communicate with one another. Internet access is not needed for a transfer after Beam is installed.</p>
+<p>Some guest Wi-Fi networks enable client isolation, which prevents connected devices from reaching each other. Use a network that allows local-device connections if the link cannot be opened.</p>
+</section>
+<section><h2>Start a local file transfer</h2>
+<ol>
+<li>Download and start Beam FileShare on the device containing the files. The desktop app and Android app can act as the host.</li>
+<li>Connect the other devices to the same Wi-Fi network. If the network blocks local connections, switch to a trusted network or use Beam&#x27;s hotspot mode where available.</li>
+<li>Open the shared local address shown by Beam, or scan its QR code, from another device&#x27;s browser. The page lets connected users upload or download files without installing Beam on the receiving device.</li>
+</ol>
+</section>
+<section><h2>Know who can access the shared folder</h2>
+<p>Beam FileShare moves files across your local network; it does not upload them to a cloud-storage service. By default, the shared page does not require separate accounts or passwords. Anyone who can reach it may upload, download, and delete shared files, so use a network you trust and share only files you intend to make available.</p>
+<p>Local transfers use HTTP by default. Beam also provides an optional TLS mode; when enabled, follow the app&#x27;s fingerprint guidance for its self-signed certificate.</p>
+</section>
+<section><h2>If the other device cannot connect</h2>
+<ul>
+<li>Confirm both devices are on the same Wi-Fi network and can communicate locally; a guest network may block this.</li>
+<li>On the host, allow Beam through the operating-system firewall for a private or trusted network.</li>
+<li>Reopen the current address or scan a fresh QR code shown by the host.</li>
+</ul>
+</section>
+<section><h2>Phones and tablets can join from a browser</h2>
+<p>Android, iPhone, and iPad can open the host&#x27;s link in a browser. The receiving device does not need the Beam app; install the Android app only when you want the Android device itself to host files.</p>
+</section></article>
+  <section class="faq" aria-labelledby="faq-title"><h2 id="faq-title">Good to know</h2><div><details><summary>Does local Wi-Fi file sharing need internet?</summary><p>No. Once Beam FileShare is installed, transfers work over a local network that lets the devices communicate. Internet is needed to download Beam or check for updates.</p></details>
+<details><summary>Do receivers need to install Beam?</summary><p>No. Receivers open the host&#x27;s link in a browser. Install Beam only on the device hosting the shared folder.</p></details></div></section>
+  <nav class="related" aria-label="Beam FileShare guides"><a href="https://omdaral.github.io/beam-website/guides/android-to-windows-file-sharing/">Beam FileShare: Transfer Files Between Android and Windows</a><a href="https://omdaral.github.io/beam-website/#guides">All Beam FileShare guides</a></nav>
+  <div class="cta"><a class="button" href="https://omdaral.github.io/beam-website/#download">Download Beam FileShare</a><a class="button secondary" href="https://github.com/omdaral/beam-fileshare">Source on GitHub</a></div>
+</main>
+<footer class="footer"><div class="wrap footer-row"><span>Beam FileShare</span><span>Built for sharing on your local network. <a href="https://github.com/omdaral/beam-fileshare">Source on GitHub</a></span></div></footer>
+</body>
+</html>

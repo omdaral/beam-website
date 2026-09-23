@@ -68,7 +68,7 @@ jobs:
           KEY="$(cat 7209de92f0507d41896aae3be1c8b4b6.txt)"
           CODE="$(curl -sS --max-time 20 -o /tmp/indexnow-response.txt -w '%{http_code}' \
             -H 'Content-Type: application/json; charset=utf-8' \
-            --data "{\"host\":\"omdaral.github.io\",\"key\":\"$KEY\",\"keyLocation\":\"https://omdaral.github.io/beam-website/7209de92f0507d41896aae3be1c8b4b6.txt\",\"urlList\":[\"https://omdaral.github.io/beam-website/\",\"https://omdaral.github.io/beam-website/ar/\"]}" \
+            --data "{\"host\":\"omdaral.github.io\",\"key\":\"$KEY\",\"keyLocation\":\"https://omdaral.github.io/beam-website/7209de92f0507d41896aae3be1c8b4b6.txt\",\"urlList\":[\"https://omdaral.github.io/beam-website/\",\"https://omdaral.github.io/beam-website/ar/\",\"https://omdaral.github.io/beam-website/guides/share-files-over-wifi/\",\"https://omdaral.github.io/beam-website/ar/guides/share-files-over-wifi/\",\"https://omdaral.github.io/beam-website/guides/android-to-windows-file-sharing/\",\"https://omdaral.github.io/beam-website/ar/guides/android-to-windows-file-sharing/\"]}" \
             https://api.indexnow.org/indexnow)"
           echo "IndexNow response: $CODE"
           if [ "$CODE" -lt 200 ] || [ "$CODE" -ge 300 ]; then

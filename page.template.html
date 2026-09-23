@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#f7f5f0">
 <meta property="og:type" content="website">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta property="og:site_name" content="Beam">
+<meta property="og:site_name" content="{{brand}}">
 <meta property="og:title" content="{{title}}">
 <meta property="og:description" content="{{og_description}}">
 <meta property="og:url" content="{{canonical}}">
@@ -40,14 +40,15 @@
 <a class="skip" href="#main">{{skip}}</a>
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="{{home_url}}" aria-label="Beam — {{skip}}">
+    <a class="brand" href="{{home_url}}" aria-label="{{brand}} — {{skip}}">
       <img src="{{asset_prefix}}assets/logo.svg" width="40" height="40" alt="" fetchpriority="high">
-      <span>Beam</span>
+      <span>{{brand}}</span>
     </a>
     <nav class="main-nav" aria-label="{{nav_label}}">
       <a href="#download">{{nav_download}}</a>
       <a href="#how">{{nav_how}}</a>
       <a href="#features">{{nav_features}}</a>
+      <a href="#guides">{{nav_guides}}</a>
       <a href="#faq">{{nav_faq}}</a>
     </nav>
     <div class="controls">
@@ -117,6 +118,13 @@
   <section class="trust">
     <div class="wrap trust-inner"><span class="trust-icon" aria-hidden="true">✓</span><div><h2>{{trust_title}}</h2><p>{{trust_text}}</p></div><a href="{{github_url}}">{{github}}</a></div>
   </section>
+  <section class="section wrap guides" id="guides" aria-labelledby="guides-title">
+    <div class="section-heading"><h2 id="guides-title">{{guides_title}}</h2><p>{{guides_intro}}</p></div>
+    <div class="guide-grid">
+      <a class="guide-card" href="{{guide_wifi_url}}"><h3>{{guide_wifi_title}}</h3><p>{{guide_wifi_desc}}</p><span>{{guide_read}} <b aria-hidden="true">↗</b></span></a>
+      <a class="guide-card" href="{{guide_android_url}}"><h3>{{guide_android_title}}</h3><p>{{guide_android_desc}}</p><span>{{guide_read}} <b aria-hidden="true">↗</b></span></a>
+    </div>
+  </section>
   <section class="section wrap faq" id="faq" aria-labelledby="faq-title">
     <div class="section-heading"><h2 id="faq-title">{{faq_title}}</h2></div>
     <div class="faq-list">{{faq_items}}</div>
@@ -124,7 +132,7 @@
 </main>
 <footer class="footer">
   <div class="wrap footer-row">
-    <a class="footer-brand" href="{{home_url}}">Beam</a>
+    <a class="footer-brand" href="{{home_url}}">{{brand}}</a>
     <p>{{footer}} <a href="{{github_url}}">{{github}}</a> · {{license}}</p>
     <div class="footer-links"><a href="{{release_url}}">{{releases}}</a><a href="{{help_url}}">{{help}}</a></div>
   </div>

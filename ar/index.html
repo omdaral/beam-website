@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Beam — مشاركة الملفات بين الهاتف والكمبيوتر عبر الواي فاي</title>
-<meta name="description" content="انقل الملفات بين الهاتف والكمبيوتر عبر شبكة واي فاي محلية. شغّل Beam على جهاز واحد، ويشارك الآخرون من المتصفح، بلا حساب أو رفع سحابي.">
+<title>Beam FileShare: مشاركة الملفات عبر واي فاي محلي</title>
+<meta name="description" content="شارك الملفات عبر واي فاي محلي باستخدام Beam FileShare على ويندوز أو ماك أو لينكس أو أندرويد. افتح الرابط بالمتصفح بلا رفع سحابي.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://omdaral.github.io/beam-website/ar/">
 <link rel="alternate" hreflang="en" href="https://omdaral.github.io/beam-website/">
@@ -13,9 +13,9 @@
 <meta name="theme-color" content="#f7f5f0">
 <meta property="og:type" content="website">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta property="og:site_name" content="Beam">
-<meta property="og:title" content="Beam — مشاركة الملفات بين الهاتف والكمبيوتر عبر الواي فاي">
-<meta property="og:description" content="مشاركة الملفات عبر الواي فاي المحلي؛ المستلم يحتاج إلى المتصفح فقط.">
+<meta property="og:site_name" content="Beam FileShare">
+<meta property="og:title" content="Beam FileShare: مشاركة الملفات عبر واي فاي محلي">
+<meta property="og:description" content="مشاركة ملفات محلية عبر الواي فاي بين ويندوز وماك ولينكس وأندرويد، بلا رفع سحابي أو تطبيق للمستلم.">
 <meta property="og:url" content="https://omdaral.github.io/beam-website/ar/">
 <meta property="og:image" content="https://omdaral.github.io/beam-website/assets/og-cover-ar.png">
 <meta property="og:image:width" content="1200">
@@ -24,8 +24,8 @@
 <meta property="og:locale" content="ar_AR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Beam — مشاركة الملفات بين الهاتف والكمبيوتر عبر الواي فاي">
-<meta name="twitter:description" content="مشاركة الملفات عبر الواي فاي المحلي؛ المستلم يحتاج إلى المتصفح فقط.">
+<meta name="twitter:title" content="Beam FileShare: مشاركة الملفات عبر واي فاي محلي">
+<meta name="twitter:description" content="مشاركة ملفات محلية عبر الواي فاي بين ويندوز وماك ولينكس وأندرويد، بلا رفع سحابي أو تطبيق للمستلم.">
 <meta name="twitter:image" content="https://omdaral.github.io/beam-website/assets/og-cover-ar.png">
 <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/logo.svg">
@@ -191,6 +191,13 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
 .feature { display: grid; grid-template-columns: 38px 1fr; column-gap: 13px; padding-block: 21px; border-block-start: 1px solid var(--line); }
 .feature-mark { grid-row: span 2; padding-block-start: 4px; color: var(--accent-dark); font-size: .78rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .feature h3 { margin-block: 0 4px; }
+.guide-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.guide-card { min-height: 190px; display: flex; flex-direction: column; align-items: flex-start; padding: 22px; border: 1px solid var(--line); border-radius: 18px; color: var(--ink); background: var(--surface); text-decoration: none; transition: border-color .16s ease, transform .16s ease; }
+.guide-card:hover { transform: translateY(-2px); border-color: var(--accent-dark); }
+.guide-card h3 { margin: 0; font-size: 1.08rem; line-height: 1.4; }
+.guide-card p { margin: 8px 0 18px; color: var(--muted); font-size: .9rem; }
+.guide-card span { display: flex; gap: 7px; align-items: center; margin-block-start: auto; color: var(--forest); font-size: .86rem; font-weight: 750; }
+.guide-card b { color: var(--accent-dark); }
 .trust { color: #f7f5f0; background: var(--forest); }
 .trust-inner { min-height: 174px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px; padding-block: 25px; }
 .trust-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #789086; border-radius: 50%; color: #d2e7d9; font-size: 1.15rem; }
@@ -257,7 +264,7 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
   .steps li, .steps li:first-child { padding: 17px 0; border-inline-start: 0; border-block-end: 1px solid var(--line); }
   .steps li:last-child { border-block-end: 0; }
   .steps h3 { margin-block-start: 5px; }
-  .download-grid, .feature-grid { grid-template-columns: 1fr; }
+  .download-grid, .feature-grid, .guide-grid { grid-template-columns: 1fr; }
   .platform-summary { min-height: 68px; padding-inline: 14px; }
   .platform-content { padding-inline: 14px; }
   .build-choice { gap: 7px; padding-inline: 9px; }
@@ -277,20 +284,21 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
 .checksum-note a { color: var(--ink); font-weight: 700; }
 
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Beam","alternateName":"Beam FileShare","applicationCategory":"UtilitiesApplication","operatingSystem":["Linux","Windows","macOS","Android"],"inLanguage":"ar","license":"https://opensource.org/licenses/MIT","softwareVersion":"1.7.1","isAccessibleForFree":true,"url":"https://omdaral.github.io/beam-website/ar/","downloadUrl":"https://github.com/omdaral/beam-fileshare/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"codeRepository":"https://github.com/omdaral/beam-fileshare"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يجب تثبيت Beam على الجهازين؟","acceptedAnswer":{"@type":"Answer","text":"لا. شغّل Beam فقط على الجهاز الذي يستضيف المجلد. تنضم الأجهزة الأخرى باستخدام متصفح الإنترنت."}},{"@type":"Question","name":"هل يحتاج Beam إلى إنترنت؟","acceptedAnswer":{"@type":"Answer","text":"نقل الملفات يعمل عبر شبكة واي فاي محلية من دون إنترنت. تحتاج الإنترنت لتنزيل Beam أو لمعرفة الإصدارات الجديدة على GitHub."}},{"@type":"Question","name":"أي نسخة أختار؟","acceptedAnswer":{"@type":"Answer","text":"اختر الملف المناسب للجهاز الذي سيشغّل Beam. أغلب أجهزة ويندوز تستخدم نسخة 64-بت، وأغلب أجهزة لينكس بمعالجات Intel أو AMD تستخدم Linux 64-bit، بينما تستخدم أجهزة Mac الحديثة Apple Silicon."}},{"@type":"Question","name":"هل تُرفع ملفاتي إلى السحابة؟","acceptedAnswer":{"@type":"Answer","text":"صُمم Beam لنقل الملفات عبر شبكتك المحلية، ولا يستخدم خدمة تخزين سحابية لإتمام النقل."}},{"@type":"Question","name":"هل يمكن استخدام Beam على iPhone؟","acceptedAnswer":{"@type":"Answer","text":"يمكن لـ iPhone الانضمام عبر Safari كجهاز يستقبل الملفات. لا تحتاج تثبيت تطبيق منفصل للتنزيل أو الرفع من الرابط المشترك."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://omdaral.github.io/beam-website/#app","name":"Beam FileShare","alternateName":"Beam local Wi-Fi file sharing","description":"شارك الملفات عبر واي فاي محلي باستخدام Beam FileShare على ويندوز أو ماك أو لينكس أو أندرويد. افتح الرابط بالمتصفح بلا رفع سحابي.","brand":{"@type":"Brand","name":"Beam FileShare"},"applicationCategory":"UtilitiesApplication","operatingSystem":["Linux","Windows","macOS","Android"],"inLanguage":"ar","license":"https://opensource.org/licenses/MIT","softwareVersion":"1.7.1","isAccessibleForFree":true,"url":"https://omdaral.github.io/beam-website/ar/","downloadUrl":"https://github.com/omdaral/beam-fileshare/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"codeRepository":"https://github.com/omdaral/beam-fileshare"},{"@type":"WebSite","@id":"https://omdaral.github.io/beam-website/#website","name":"Beam FileShare","url":"https://omdaral.github.io/beam-website/","inLanguage":["en","ar"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يجب تثبيت Beam FileShare على الجهازين؟","acceptedAnswer":{"@type":"Answer","text":"لا. شغّل Beam FileShare على الجهاز الذي يستضيف المجلد فقط. تنضم الأجهزة الأخرى عبر المتصفح."}},{"@type":"Question","name":"هل يحتاج Beam FileShare إلى إنترنت لنقل الملفات؟","acceptedAnswer":{"@type":"Answer","text":"يعمل النقل عبر شبكة واي فاي محلية من دون إنترنت. تحتاج الإنترنت لتنزيل Beam FileShare أو لمعرفة إصدار جديد على GitHub."}},{"@type":"Question","name":"أي نسخة أختار؟","acceptedAnswer":{"@type":"Answer","text":"اختر نسخة تناسب الجهاز الذي سيشغّل Beam FileShare. أغلب أجهزة ويندوز تستخدم x64، وأغلب أجهزة لينكس بمعالجات Intel أو AMD تستخدم x64، وأجهزة Mac الأحدث تستخدم Apple Silicon. يستخدم أندرويد ملف APK."}},{"@type":"Question","name":"هل يرفع Beam FileShare الملفات إلى تخزين سحابي؟","acceptedAnswer":{"@type":"Answer","text":"لا. ينقل Beam FileShare الملفات عبر شبكتك المحلية بدل رفعها إلى خدمة تخزين سحابي."}},{"@type":"Question","name":"هل أستطيع استخدام Beam FileShare من iPhone؟","acceptedAnswer":{"@type":"Answer","text":"نعم. افتح رابط الجهاز المضيف في Safari للانضمام كمستلم. لا تحتاج إلى تثبيت Beam FileShare على iPhone."}}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="../" aria-label="Beam — تخطَّ إلى المحتوى">
+    <a class="brand" href="../" aria-label="Beam FileShare — تخطَّ إلى المحتوى">
       <img src="../assets/logo.svg" width="40" height="40" alt="" fetchpriority="high">
-      <span>Beam</span>
+      <span>Beam FileShare</span>
     </a>
     <nav class="main-nav" aria-label="التنقل الرئيسي">
       <a href="#download">التنزيلات</a>
       <a href="#how">طريقة العمل</a>
       <a href="#features">المميزات</a>
+      <a href="#guides">الشروحات</a>
       <a href="#faq">الأسئلة</a>
     </nav>
     <div class="controls">
@@ -302,14 +310,14 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
 <main id="main">
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span>مجاني · مفتوح المصدر · شبكة محلية</p>
-      <h1 id="hero-title">شارك الملفات عبر الواي فاي، بلا تطبيق للمستلم.</h1>
-      <p class="lead">شغّل Beam على جهاز واحد، وافتح رابطه على باقي الأجهزة. يرفع الجميع الملفات وينزّلونها من المتصفح، من غير حساب أو سحابة أو تثبيت التطبيق عند المستلم.</p>
+      <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span>مجاني · مفتوح المصدر · مشاركة ملفات عبر واي فاي محلي</p>
+      <h1 id="hero-title">شارك الملفات عبر الواي فاي المحلي، بلا رفع سحابي.</h1>
+      <p class="lead">شغّل Beam FileShare على جهاز Windows أو macOS أو Linux أو Android. افتح الرابط من متصفح جهاز آخر لرفع الملفات أو تنزيلها عبر الشبكة المحلية نفسها.</p>
       <div class="hero-actions">
-        <a class="button primary" id="smartDownload" href="#download" data-default="نزّل Beam لهذا الجهاز" data-prefix="نزّل Beam لـ" data-ios-label="استخدم Beam من Safari">نزّل Beam لهذا الجهاز</a>
+        <a class="button primary" id="smartDownload" href="#download" data-default="نزّل Beam FileShare" data-prefix="نزّل Beam FileShare لـ" data-ios-label="استخدم Beam من Safari">نزّل Beam FileShare</a>
         <a class="button secondary" href="#how">اعرف طريقة العمل</a>
       </div>
-      <p class="hero-note"><span class="local-dot" aria-hidden="true"></span>ملفاتك تبقى على شبكتك المحلية.</p>
+      <p class="hero-note"><span class="local-dot" aria-hidden="true"></span>تنتقل الملفات عبر شبكتك المحلية. استخدم Beam FileShare على شبكة تثق بها.</p>
       <p class="release-line"><span id="versionBadge">أحدث إصدار v1.7.1</span><span class="status-dot" aria-hidden="true"></span><span id="releaseStatus">مفتوح المصدر بترخيص MIT</span></p>
     </div>
     <figure class="transfer-visual" aria-label="رسم يوضح مشاركة ملف بين هاتف وكمبيوتر عبر اتصال واي فاي محلي">
@@ -326,22 +334,22 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
       <span class="transfer-caption">واي فاي · متصفح · ملفات محلية</span>
     </figure>
   </section>
-  <section class="proof wrap" aria-label="ملفاتك تبقى على شبكتك المحلية.">
-    <p><strong>جهاز مضيف واحد</strong><span>الكمبيوتر الذي يحتوي المجلد المشترك</span></p>
-    <p><strong>المتصفح يكفي</strong><span>لا يلزم تثبيت Beam على الأجهزة الأخرى</span></p>
+  <section class="proof wrap" aria-label="تنتقل الملفات عبر شبكتك المحلية. استخدم Beam FileShare على شبكة تثق بها.">
+    <p><strong>جهاز مضيف واحد</strong><span>جهاز Windows أو Mac أو Linux أو Android</span></p>
+    <p><strong>المتصفح يكفي</strong><span>لا يحتاج المستلم تثبيت Beam FileShare</span></p>
     <p><strong>نقل محلي</strong><span>من دون وسيط تخزين سحابي</span></p>
   </section>
   <section class="section wrap" id="how" aria-labelledby="how-title">
     <div class="section-heading"><h2 id="how-title">من تشغيل البرنامج إلى مشاركة الملفات</h2><p>جهاز واحد يستضيف المجلد، وباقي الأجهزة تنضم من المتصفح.</p></div>
     <ol class="steps">
-      <li><span class="step-no">01</span><h3>شغّل Beam</h3><p>افتح البرنامج على الكمبيوتر الذي يحتوي الملفات التي تريد مشاركتها.</p></li>
+      <li><span class="step-no">01</span><h3>شغّل Beam FileShare</h3><p>شغّل Beam FileShare على الجهاز الذي سيستضيف المجلد المشترك.</p></li>
       <li><span class="step-no">02</span><h3>اتصل بالشبكة</h3><p>صِل الأجهزة على نفس الواي فاي، أو ابدأ شبكة Beam خاصة.</p></li>
       <li><span class="step-no">03</span><h3>افتح الرابط</h3><p>امسح رمز QR أو اكتب الرابط على الهاتف أو الكمبيوتر. المستلم لا يحتاج التطبيق.</p></li>
     </ol>
   </section>
   <section class="section downloads" id="download" aria-labelledby="download-title">
     <div class="wrap">
-      <div class="section-heading download-heading"><div><h2 id="download-title">اختر نسخة التنزيل</h2><p>اختر النظام ونوع الحزمة. نقترح تلقائيًا النسخة الأقرب لجهازك من الزر بالأعلى.</p></div><span class="free-mark">مجاني · مفتوح المصدر · شبكة محلية</span></div>
+      <div class="section-heading download-heading"><div><h2 id="download-title">اختر نسخة التنزيل</h2><p>اختر النظام ونوع الحزمة. نقترح تلقائيًا النسخة الأقرب لجهازك من الزر بالأعلى.</p></div><span class="free-mark">مجاني · مفتوح المصدر · مشاركة ملفات عبر واي فاي محلي</span></div>
       <div class="download-grid"><details class="download-platform" data-platform="windows"><summary class="platform-summary"><span class="platform-summary-main"><b>ويندوز</b><small class="platform-recommendation">مناسب لهذا الجهاز</small></span><span class="platform-count"><b>2</b><span>خيارات</span></span><span class="platform-chevron" aria-hidden="true"></span></summary><div class="platform-content"><p class="platform-description">اختر x64 لمعظم الأجهزة، أو ARM64 للأجهزة بمعالج ARM.</p><div class="build-list"><a class="build-choice" data-asset="windows-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-amd64.zip" aria-label="تنزيل ويندوز · x64"><span class="build-choice-main"><b>ويندوز · x64</b><small>ملف ZIP محمول · بلا مُثبّت</small></span><span class="build-size" data-asset-size="windows-amd64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="windows-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-arm64.zip" aria-label="تنزيل ويندوز · ARM64"><span class="build-choice-main"><b>ويندوز · ARM64</b><small>ملف ZIP محمول · بلا مُثبّت</small></span><span class="build-size" data-asset-size="windows-arm64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></div></details>
 <details class="download-platform" data-platform="macos"><summary class="platform-summary"><span class="platform-summary-main"><b>macOS</b><small class="platform-recommendation">مناسب لهذا الجهاز</small></span><span class="platform-count"><b>2</b><span>خيارات</span></span><span class="platform-chevron" aria-hidden="true"></span></summary><div class="platform-content"><p class="platform-description">اختر Apple Silicon لأجهزة M، أو Intel لأجهزة Mac الأقدم.</p><div class="build-list"><a class="build-choice" data-asset="macos-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-arm64.zip" aria-label="تنزيل Apple Silicon · ARM64"><span class="build-choice-main"><b>Apple Silicon · ARM64</b><small>ملف ZIP محمول · بلا مُثبّت</small></span><span class="build-size" data-asset-size="macos-arm64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="macos-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-amd64.zip" aria-label="تنزيل Intel · x64"><span class="build-choice-main"><b>Intel · x64</b><small>ملف ZIP محمول · بلا مُثبّت</small></span><span class="build-size" data-asset-size="macos-amd64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></div></details>
 <details class="download-platform" data-platform="linux"><summary class="platform-summary"><span class="platform-summary-main"><b>لينكس</b><small class="platform-recommendation">مناسب لهذا الجهاز</small></span><span class="platform-count"><b>7</b><span>خيارات</span></span><span class="platform-chevron" aria-hidden="true"></span></summary><div class="platform-content"><p class="platform-description">اختر نسخة محمولة أو نوع الحزمة الذي تستخدمه توزيعة لينكس لديك.</p><div class="build-list"><a class="build-choice" data-asset="linux-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-amd64.tar.gz" aria-label="تنزيل لينكس · x64"><span class="build-choice-main"><b>لينكس · x64</b><small>أرشيف .tar.gz محمول</small></span><span class="build-size" data-asset-size="linux-amd64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="linux-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-arm64.tar.gz" aria-label="تنزيل لينكس · ARM64"><span class="build-choice-main"><b>لينكس · ARM64</b><small>أرشيف .tar.gz محمول</small></span><span class="build-size" data-asset-size="linux-arm64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="appimage-x64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-x86_64.AppImage" aria-label="تنزيل AppImage · x64"><span class="build-choice-main"><b>AppImage · x64</b><small>تطبيق بملف واحد · بلا تثبيت</small></span><span class="build-size" data-asset-size="appimage-x64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="appimage-arm" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-aarch64.AppImage" aria-label="تنزيل AppImage · ARM64"><span class="build-choice-main"><b>AppImage · ARM64</b><small>تطبيق بملف واحد · بلا تثبيت</small></span><span class="build-size" data-asset-size="appimage-arm" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="deb-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_amd64.deb" aria-label="تنزيل Debian / Ubuntu · x64"><span class="build-choice-main"><b>Debian / Ubuntu · x64</b><small>حزمة .deb</small></span><span class="build-size" data-asset-size="deb-amd64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="deb-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_arm64.deb" aria-label="تنزيل Debian / Ubuntu · ARM64"><span class="build-choice-main"><b>Debian / Ubuntu · ARM64</b><small>حزمة .deb</small></span><span class="build-size" data-asset-size="deb-arm64" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="rpm" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare-1.7.1-1.x86_64.rpm" aria-label="تنزيل Fedora / RPM · x64"><span class="build-choice-main"><b>Fedora / RPM · x64</b><small>حزمة .rpm</small></span><span class="build-size" data-asset-size="rpm" aria-hidden="true"></span><span class="build-download">تنزيل</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></div></details>
@@ -354,32 +362,39 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
   <section class="section wrap" id="features" aria-labelledby="features-title">
     <div class="section-heading"><h2 id="features-title">مشاركة مباشرة بين أجهزتك</h2></div>
     <div class="feature-grid">
-      <article class="feature"><span class="feature-mark" aria-hidden="true">01</span><h3>بدون وسيط سحابي</h3><p>تنتقل الملفات عبر شبكتك المحلية؛ Beam لا يرفعها إلى خدمة تخزين سحابي.</p></article>
+      <article class="feature"><span class="feature-mark" aria-hidden="true">01</span><h3>بدون وسيط سحابي</h3><p>ينقل Beam FileShare الملفات عبر شبكتك المحلية بدل رفعها إلى تخزين سحابي.</p></article>
       <article class="feature"><span class="feature-mark" aria-hidden="true">02</span><h3>المتصفح يكفي للمستلم</h3><p>أرسل الرابط إلى هاتف أو جهاز لوحي أو كمبيوتر. لا يحتاج المستلم حسابًا أو تثبيت Beam.</p></article>
       <article class="feature"><span class="feature-mark" aria-hidden="true">03</span><h3>استئناف نقل الملفات الكبيرة</h3><p>يقسم Beam الملفات إلى أجزاء مع التحقق منها، ويمكنه متابعة النقل بعد انقطاع الاتصال.</p></article>
-      <article class="feature"><span class="feature-mark" aria-hidden="true">04</span><h3>مجاني ومفتوح المصدر</h3><p>ترخيص Beam هو MIT. راجع الشيفرة وبصمات ملفات الإصدار على GitHub.</p></article>
+      <article class="feature"><span class="feature-mark" aria-hidden="true">04</span><h3>مجاني ومفتوح المصدر</h3><p>Beam FileShare مفتوح المصدر بترخيص MIT. راجع الشيفرة وبصمات ملفات الإصدار على GitHub.</p></article>
     </div>
   </section>
   <section class="trust">
-    <div class="wrap trust-inner"><span class="trust-icon" aria-hidden="true">✓</span><div><h2>شبكتك وملفاتك</h2><p>صُمم Beam للمشاركة على الشبكة المحلية. استخدمه على شبكة تثق بها، وشارك المجلدات التي تريد إتاحتها فقط.</p></div><a href="https://github.com/omdaral/beam-fileshare">الشيفرة على GitHub</a></div>
+    <div class="wrap trust-inner"><span class="trust-icon" aria-hidden="true">✓</span><div><h2>شبكتك وملفاتك</h2><p>صُمم Beam FileShare للمشاركة عبر الشبكة المحلية. استخدمه على شبكة تثق بها، وشارك المجلدات التي تريد إتاحتها فقط.</p></div><a href="https://github.com/omdaral/beam-fileshare">الشيفرة على GitHub</a></div>
+  </section>
+  <section class="section wrap guides" id="guides" aria-labelledby="guides-title">
+    <div class="section-heading"><h2 id="guides-title">شروحات Beam FileShare</h2><p>خطوات عملية لمشاركة الملفات محليًا واختيار الجهاز المضيف والانضمام من جهاز آخر.</p></div>
+    <div class="guide-grid">
+      <a class="guide-card" href="guides/share-files-over-wifi/"><h3>مشاركة الملفات عبر الواي فاي بلا رفع سحابي</h3><p>إعداد جهاز لمشاركة الملفات محليًا وفتح الرابط من متصفح جهاز آخر.</p><span>اقرأ الشرح <b aria-hidden="true">↗</b></span></a>
+      <a class="guide-card" href="guides/android-to-windows-file-sharing/"><h3>نقل الملفات بين أندرويد وويندوز</h3><p>استخدم أندرويد أو ويندوز كجهاز مضيف وانقل الملفات عبر شبكة الواي فاي نفسها.</p><span>اقرأ الشرح <b aria-hidden="true">↗</b></span></a>
+    </div>
   </section>
   <section class="section wrap faq" id="faq" aria-labelledby="faq-title">
     <div class="section-heading"><h2 id="faq-title">معلومات مهمة</h2></div>
-    <div class="faq-list"><details><summary>هل يجب تثبيت Beam على الجهازين؟</summary><p>لا. شغّل Beam فقط على الجهاز الذي يستضيف المجلد. تنضم الأجهزة الأخرى باستخدام متصفح الإنترنت.</p></details>
-<details><summary>هل يحتاج Beam إلى إنترنت؟</summary><p>نقل الملفات يعمل عبر شبكة واي فاي محلية من دون إنترنت. تحتاج الإنترنت لتنزيل Beam أو لمعرفة الإصدارات الجديدة على GitHub.</p></details>
-<details><summary>أي نسخة أختار؟</summary><p>اختر الملف المناسب للجهاز الذي سيشغّل Beam. أغلب أجهزة ويندوز تستخدم نسخة 64-بت، وأغلب أجهزة لينكس بمعالجات Intel أو AMD تستخدم Linux 64-bit، بينما تستخدم أجهزة Mac الحديثة Apple Silicon.</p></details>
-<details><summary>هل تُرفع ملفاتي إلى السحابة؟</summary><p>صُمم Beam لنقل الملفات عبر شبكتك المحلية، ولا يستخدم خدمة تخزين سحابية لإتمام النقل.</p></details>
-<details><summary>هل يمكن استخدام Beam على iPhone؟</summary><p>يمكن لـ iPhone الانضمام عبر Safari كجهاز يستقبل الملفات. لا تحتاج تثبيت تطبيق منفصل للتنزيل أو الرفع من الرابط المشترك.</p></details></div>
+    <div class="faq-list"><details><summary>هل يجب تثبيت Beam FileShare على الجهازين؟</summary><p>لا. شغّل Beam FileShare على الجهاز الذي يستضيف المجلد فقط. تنضم الأجهزة الأخرى عبر المتصفح.</p></details>
+<details><summary>هل يحتاج Beam FileShare إلى إنترنت لنقل الملفات؟</summary><p>يعمل النقل عبر شبكة واي فاي محلية من دون إنترنت. تحتاج الإنترنت لتنزيل Beam FileShare أو لمعرفة إصدار جديد على GitHub.</p></details>
+<details><summary>أي نسخة أختار؟</summary><p>اختر نسخة تناسب الجهاز الذي سيشغّل Beam FileShare. أغلب أجهزة ويندوز تستخدم x64، وأغلب أجهزة لينكس بمعالجات Intel أو AMD تستخدم x64، وأجهزة Mac الأحدث تستخدم Apple Silicon. يستخدم أندرويد ملف APK.</p></details>
+<details><summary>هل يرفع Beam FileShare الملفات إلى تخزين سحابي؟</summary><p>لا. ينقل Beam FileShare الملفات عبر شبكتك المحلية بدل رفعها إلى خدمة تخزين سحابي.</p></details>
+<details><summary>هل أستطيع استخدام Beam FileShare من iPhone؟</summary><p>نعم. افتح رابط الجهاز المضيف في Safari للانضمام كمستلم. لا تحتاج إلى تثبيت Beam FileShare على iPhone.</p></details></div>
   </section>
 </main>
 <footer class="footer">
   <div class="wrap footer-row">
-    <a class="footer-brand" href="../">Beam</a>
+    <a class="footer-brand" href="../">Beam FileShare</a>
     <p>مشاركة مصممة لشبكتك المحلية. <a href="https://github.com/omdaral/beam-fileshare">الشيفرة على GitHub</a> · مفتوح المصدر بترخيص MIT</p>
     <div class="footer-links"><a href="https://github.com/omdaral/beam-fileshare/releases/latest">كل الإصدارات</a><a href="https://github.com/omdaral/beam-fileshare/blob/main/HELP.md">دليل التشغيل والمساعدة</a></div>
   </div>
 </footer>
 <script src="../app.js" defer></script>
-<noscript><p class="noscript">روابط تنزيل Beam ومعلومات البرنامج الأساسية متاحة حتى عند إيقاف JavaScript.</p></noscript>
+<noscript><p class="noscript">روابط تنزيل Beam FileShare ومعلومات البرنامج متاحة حتى عند إيقاف JavaScript.</p></noscript>
 </body>
 </html>

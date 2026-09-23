@@ -43,7 +43,7 @@ jobs:
           if not tag:
               print("no tag_name — keeping existing file")
               raise SystemExit(0)
-          assets = [{"name": a["name"], "url": a["browser_download_url"]}
+          assets = [{"name": a["name"], "url": a["browser_download_url"], "size": a.get("size")}
                     for a in (j.get("assets") or [])
                     if a.get("name") and a.get("browser_download_url")]
           out = {"repo": "omdaral/beam-fileshare", "tag": tag,

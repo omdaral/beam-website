@@ -152,24 +152,31 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
 .download-heading { max-width: none; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; }
 .download-heading>div { max-width: 710px; }
 .free-mark { padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .83rem; font-weight: 700; }
-.download-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-.download-option { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); }
-.download-option.recommended { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
-.download-name { min-width: 0; }
-.download-name h3 { margin: 0; font-size: 1.12rem; }
-.download-name p { margin: 3px 0 0; color: var(--muted); font-size: .88rem; }
-.download-link { min-height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 14px; border-radius: 999px; color: #fff; background: var(--forest); text-decoration: none; font-size: .88rem; font-weight: 750; }
-.download-link:hover { background: var(--ink); }
+.download-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.download-platform { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); }
+.download-platform.recommended { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.platform-linux { grid-column: 1 / -1; }
+.platform-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-block-end: 14px; }
+.platform-heading h3 { margin: 0; font-size: 1.12rem; }
+.platform-heading p { margin: 3px 0 0; color: var(--muted); font-size: .84rem; }
+.platform-mark { flex: none; padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; color: var(--muted); font-size: .7rem; font-weight: 800; letter-spacing: .04em; }
+.build-list { display: grid; gap: 7px; }
+.platform-linux .build-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.build-choice { min-width: 0; min-height: 58px; display: flex; align-items: center; gap: 9px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--surface); text-decoration: none; transition: border-color .16s ease, transform .16s ease, background-color .16s ease; }
+.build-choice:hover { transform: translateY(-1px); border-color: var(--forest); }
+.build-choice.recommended { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.build-choice-main { min-width: 0; flex: 1; display: grid; gap: 1px; }
+.build-choice-main b { overflow-wrap: anywhere; font-size: .88rem; line-height: 1.35; }
+.build-choice-main small { color: var(--muted); font-size: .75rem; line-height: 1.35; }
+.build-size { flex: none; color: var(--muted); font-size: .7rem; font-variant-numeric: tabular-nums; white-space: nowrap; direction: ltr; }
+.build-download { flex: none; color: var(--forest); font-size: .78rem; font-weight: 750; }
+.build-arrow { flex: none; color: var(--accent-dark); font-size: 1rem; font-weight: 800; }
+.build-choice:hover .build-download, .build-choice:hover .build-arrow { color: var(--accent-dark); }
 .phone-note { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-block-start: 14px; padding: 18px 22px; border-inline-start: 4px solid var(--accent); border-radius: 0 16px 16px 0; background: var(--mint); }
 .phone-note h3 { margin-block-start: 0; }
 .phone-mark { flex: none; color: var(--forest); font-size: 1.5rem; }
-.more-builds, .terminal { margin-block-start: 14px; border-block-end: 1px solid var(--line); }
-.more-builds summary, .terminal summary { min-height: 52px; display: flex; align-items: center; cursor: pointer; font-weight: 750; }
-.alt-downloads { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 18px; padding-block: 2px 18px; }
-.alt-downloads a { min-width: 0; display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-block-end: 1px solid var(--line); color: var(--muted); text-decoration: none; font-size: .9rem; }
-.alt-downloads a:hover { color: var(--accent-dark); }
-.alt-downloads a span { overflow-wrap: anywhere; }
-.alt-downloads b { color: var(--ink); font-weight: 650; }
+.terminal { margin-block-start: 14px; border-block-end: 1px solid var(--line); }
+.terminal summary { min-height: 52px; display: flex; align-items: center; cursor: pointer; font-weight: 750; }
 .command { min-width: 0; display: flex; align-items: center; gap: 10px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); direction: ltr; }
 .command code { min-width: 0; flex: 1; overflow-x: auto; white-space: nowrap; font: .8rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
 .command button { min-height: 40px; padding: 7px 12px; border: 0; border-radius: 8px; color: #fff; background: var(--forest); font: inherit; font-weight: 700; cursor: pointer; }
@@ -244,11 +251,12 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
   .steps li, .steps li:first-child { padding: 17px 0; border-inline-start: 0; border-block-end: 1px solid var(--line); }
   .steps li:last-child { border-block-end: 0; }
   .steps h3 { margin-block-start: 5px; }
-  .download-grid, .feature-grid, .alt-downloads { grid-template-columns: 1fr; }
-  .download-option { padding: 16px; gap: 8px; }
-  .download-name h3 { font-size: 1.02rem; }
-  .download-name p { font-size: .8rem; }
-  .download-link { padding-inline: 12px; font-size: .82rem; }
+  .download-grid, .feature-grid { grid-template-columns: 1fr; }
+  .download-platform { padding: 14px; }
+  .platform-linux { grid-column: auto; }
+  .platform-linux .build-list { grid-template-columns: 1fr; }
+  .build-choice { gap: 7px; padding-inline: 9px; }
+  .build-download { font-size: .74rem; }
   .phone-note { padding: 16px; }
   .trust-inner { grid-template-columns: auto 1fr; gap: 15px; padding-block: 25px; }
   .trust-inner>a { grid-column: 2; justify-self: start; }
@@ -328,21 +336,13 @@ h1 { max-width: 18ch; margin: 0; font-size: clamp(2.45rem, 4.45vw, 4.05rem); let
   </section>
   <section class="section downloads" id="download" aria-labelledby="download-title">
     <div class="wrap">
-      <div class="section-heading download-heading"><div><h2 id="download-title">Choose your download</h2><p>Free downloads for desktop and Android. Pick your system or use the recommended button above.</p></div><span class="free-mark">Free · Open source · Local network</span></div>
-      <div class="download-grid"><article class="download-option"><div class="download-name"><h3>Windows</h3><p>64-bit · portable ZIP · no installer</p></div><a class="download-link" data-asset="windows-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-amd64.zip" aria-label="Download Windows">Download <span aria-hidden="true">↓</span></a></article>
-<article class="download-option"><div class="download-name"><h3>Linux</h3><p>64-bit · portable archive · no package setup</p></div><a class="download-link" data-asset="linux-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-amd64.tar.gz" aria-label="Download Linux">Download <span aria-hidden="true">↓</span></a></article>
-<article class="download-option"><div class="download-name"><h3>macOS</h3><p>Apple Silicon · Intel build also available</p></div><a class="download-link" data-asset="macos-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-arm64.zip" aria-label="Download macOS">Download <span aria-hidden="true">↓</span></a></article>
-<article class="download-option"><div class="download-name"><h3>Android</h3><p>APK · install on the device running Beam</p></div><a class="download-link" data-asset="android" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-android.apk" aria-label="Download Android">Download <span aria-hidden="true">↓</span></a></article></div>
+      <div class="section-heading download-heading"><div><h2 id="download-title">Choose your download</h2><p>Choose a platform and build type. Beam recommends the closest match for your device above.</p></div><span class="free-mark">Free · Open source · Local network</span></div>
+      <div class="download-grid"><article class="download-platform" data-platform="windows"><header class="platform-heading"><div><h3>Windows</h3><p>Choose x64 for most PCs, or ARM64 for ARM-powered devices.</p></div><span class="platform-mark" aria-hidden="true">WINDOWS</span></header><div class="build-list"><a class="build-choice" data-asset="windows-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-amd64.zip" aria-label="Download Windows · x64"><span class="build-choice-main"><b>Windows · x64</b><small>Portable ZIP · no installer</small></span><span class="build-size" data-asset-size="windows-amd64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="windows-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-arm64.zip" aria-label="Download Windows · ARM64"><span class="build-choice-main"><b>Windows · ARM64</b><small>Portable ZIP · no installer</small></span><span class="build-size" data-asset-size="windows-arm64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></article>
+<article class="download-platform" data-platform="macos"><header class="platform-heading"><div><h3>macOS</h3><p>Choose Apple Silicon for M-series Macs, or Intel for older Macs.</p></div><span class="platform-mark" aria-hidden="true">MAC</span></header><div class="build-list"><a class="build-choice" data-asset="macos-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-arm64.zip" aria-label="Download Apple Silicon · ARM64"><span class="build-choice-main"><b>Apple Silicon · ARM64</b><small>Portable ZIP · no installer</small></span><span class="build-size" data-asset-size="macos-arm64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="macos-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-amd64.zip" aria-label="Download Intel · x64"><span class="build-choice-main"><b>Intel · x64</b><small>Portable ZIP · no installer</small></span><span class="build-size" data-asset-size="macos-amd64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></article>
+<article class="download-platform platform-linux" data-platform="linux"><header class="platform-heading"><div><h3>Linux</h3><p>Choose a portable build or the package format used by your distribution.</p></div><span class="platform-mark" aria-hidden="true">LINUX</span></header><div class="build-list"><a class="build-choice" data-asset="linux-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-amd64.tar.gz" aria-label="Download Linux · x64"><span class="build-choice-main"><b>Linux · x64</b><small>Portable .tar.gz archive</small></span><span class="build-size" data-asset-size="linux-amd64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="linux-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-arm64.tar.gz" aria-label="Download Linux · ARM64"><span class="build-choice-main"><b>Linux · ARM64</b><small>Portable .tar.gz archive</small></span><span class="build-size" data-asset-size="linux-arm64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="appimage-x64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-x86_64.AppImage" aria-label="Download AppImage · x64"><span class="build-choice-main"><b>AppImage · x64</b><small>Single-file app · no installation</small></span><span class="build-size" data-asset-size="appimage-x64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="appimage-arm" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-aarch64.AppImage" aria-label="Download AppImage · ARM64"><span class="build-choice-main"><b>AppImage · ARM64</b><small>Single-file app · no installation</small></span><span class="build-size" data-asset-size="appimage-arm" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="deb-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_amd64.deb" aria-label="Download Debian / Ubuntu · x64"><span class="build-choice-main"><b>Debian / Ubuntu · x64</b><small>.deb package</small></span><span class="build-size" data-asset-size="deb-amd64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="deb-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_arm64.deb" aria-label="Download Debian / Ubuntu · ARM64"><span class="build-choice-main"><b>Debian / Ubuntu · ARM64</b><small>.deb package</small></span><span class="build-size" data-asset-size="deb-arm64" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a><a class="build-choice" data-asset="rpm" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare-1.7.1-1.x86_64.rpm" aria-label="Download Fedora / RPM · x64"><span class="build-choice-main"><b>Fedora / RPM · x64</b><small>.rpm package</small></span><span class="build-size" data-asset-size="rpm" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></article>
+<article class="download-platform" data-platform="android"><header class="platform-heading"><div><h3>Android</h3><p>Install Beam on the Android device that will host files.</p></div><span class="platform-mark" aria-hidden="true">ANDROID</span></header><div class="build-list"><a class="build-choice" data-asset="android" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-android.apk" aria-label="Download Android · APK"><span class="build-choice-main"><b>Android · APK</b><small>Installable APK</small></span><span class="build-size" data-asset-size="android" aria-hidden="true"></span><span class="build-download">Download</span><span class="build-arrow" aria-hidden="true">↓</span></a></div></article></div>
       <div class="phone-note" id="iphone-note"><div><h3>Using an iPhone or iPad?</h3><p>You do not need to install Beam on the receiving device. Open the shared link in Safari to upload or download files.</p></div><span class="phone-mark" aria-hidden="true">↗</span></div>
       <p class="checksum-note" id="verify">Check release files with the published SHA256 checksums. <a href="https://github.com/omdaral/beam-fileshare/releases/latest">View checksums and release notes</a></p>
-      <details class="more-builds"><summary>More builds and Linux packages</summary><div class="alt-downloads"><a data-asset="linux-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-arm64.tar.gz"><span>Linux ARM 64-bit (Raspberry Pi)</span><b dir="ltr">Beam-1.7.1-linux-arm64.tar.gz</b></a>
-<a data-asset="windows-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-arm64.zip"><span>Windows ARM 64-bit</span><b dir="ltr">Beam-1.7.1-windows-arm64.zip</b></a>
-<a data-asset="macos-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-amd64.zip"><span>macOS Intel</span><b dir="ltr">Beam-1.7.1-macos-amd64.zip</b></a>
-<a data-asset="deb-amd64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_amd64.deb"><span>Debian / Ubuntu · 64-bit</span><b dir="ltr">beam-fileshare_1.7.1-1_amd64.deb</b></a>
-<a data-asset="deb-arm64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_arm64.deb"><span>Debian / Ubuntu · ARM 64-bit</span><b dir="ltr">beam-fileshare_1.7.1-1_arm64.deb</b></a>
-<a data-asset="appimage-x64" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-x86_64.AppImage"><span>AppImage · 64-bit</span><b dir="ltr">Beam-1.7.1-x86_64.AppImage</b></a>
-<a data-asset="appimage-arm" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-aarch64.AppImage"><span>AppImage · ARM 64-bit</span><b dir="ltr">Beam-1.7.1-aarch64.AppImage</b></a>
-<a data-asset="rpm" href="https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare-1.7.1-1.x86_64.rpm"><span>Fedora / RPM · 64-bit</span><b dir="ltr">beam-fileshare-1.7.1-1.x86_64.rpm</b></a></div></details>
       <details class="terminal"><summary>Prefer installing from a terminal?</summary><div class="command"><code id="oneline">curl -sSL https://raw.githubusercontent.com/omdaral/beam-fileshare/main/get-beam.sh | bash -s -- --install</code><button id="copyBtn" type="button" aria-live="polite">Copy command</button></div><p class="small-note">The installer detects your operating system and architecture.</p></details>
     </div>
   </section>

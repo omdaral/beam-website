@@ -1,69 +1,69 @@
 {
  "assets": [
   {
-   "name": "Beam-1.7.0-aarch64.AppImage",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-aarch64.AppImage"
+   "name": "Beam-1.7.1-aarch64.AppImage",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-aarch64.AppImage"
   },
   {
-   "name": "Beam-1.7.0-android.apk",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-android.apk"
+   "name": "Beam-1.7.1-android.apk",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-android.apk"
   },
   {
-   "name": "Beam-1.7.0-linux-amd64.tar.gz",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-linux-amd64.tar.gz"
+   "name": "Beam-1.7.1-linux-amd64.tar.gz",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-amd64.tar.gz"
   },
   {
-   "name": "Beam-1.7.0-linux-arm64.tar.gz",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-linux-arm64.tar.gz"
+   "name": "Beam-1.7.1-linux-arm64.tar.gz",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-linux-arm64.tar.gz"
   },
   {
-   "name": "Beam-1.7.0-macos-amd64.zip",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-macos-amd64.zip"
+   "name": "Beam-1.7.1-macos-amd64.zip",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-amd64.zip"
   },
   {
-   "name": "Beam-1.7.0-macos-arm64.zip",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-macos-arm64.zip"
+   "name": "Beam-1.7.1-macos-arm64.zip",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-macos-arm64.zip"
   },
   {
-   "name": "Beam-1.7.0-windows-amd64.zip",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-windows-amd64.zip"
+   "name": "Beam-1.7.1-windows-amd64.zip",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-amd64.zip"
   },
   {
-   "name": "Beam-1.7.0-windows-arm64.zip",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-windows-arm64.zip"
+   "name": "Beam-1.7.1-windows-arm64.zip",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-windows-arm64.zip"
   },
   {
-   "name": "Beam-1.7.0-x86_64.AppImage",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/Beam-1.7.0-x86_64.AppImage"
+   "name": "Beam-1.7.1-x86_64.AppImage",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/Beam-1.7.1-x86_64.AppImage"
   },
   {
-   "name": "beam-fileshare-1.7.0-1.x86_64.rpm",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/beam-fileshare-1.7.0-1.x86_64.rpm"
+   "name": "beam-fileshare-1.7.1-1.x86_64.rpm",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare-1.7.1-1.x86_64.rpm"
   },
   {
-   "name": "beam-fileshare_1.7.0-1_amd64.deb",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/beam-fileshare_1.7.0-1_amd64.deb"
+   "name": "beam-fileshare_1.7.1-1_amd64.deb",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_amd64.deb"
   },
   {
-   "name": "beam-fileshare_1.7.0-1_arm64.deb",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/beam-fileshare_1.7.0-1_arm64.deb"
+   "name": "beam-fileshare_1.7.1-1_arm64.deb",
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/beam-fileshare_1.7.1-1_arm64.deb"
   },
   {
    "name": "MANIFEST.json",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/MANIFEST.json"
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/MANIFEST.json"
   },
   {
    "name": "SHA256SUMS",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/SHA256SUMS"
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/SHA256SUMS"
   },
   {
    "name": "versions.json",
-   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.0/versions.json"
+   "url": "https://github.com/omdaral/beam-fileshare/releases/download/v1.7.1/versions.json"
   }
  ],
  "fallback": false,
- "fetched_at": "2026-09-23T20:23:47Z",
- "published_at": "2026-09-20T13:13:39Z",
+ "fetched_at": "2026-09-23T20:35:19Z",
+ "published_at": "2026-09-23T20:34:41Z",
  "repo": "AhmedFaseh/beam-fileshare",
- "tag": "v1.7.0"
+ "tag": "v1.7.1"
 }
